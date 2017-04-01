@@ -1,0 +1,35 @@
+.cell {
+    box-sizing: border-box;
+    border: 3px solid #336a86;
+    float: left;
+    font-family: 'Verdana';
+    font-size: 60px;
+    height: 80px;
+    text-align: center;
+    user-select: none;
+    width: 33.33%
+}
+
+.left {
+    border-left-color: transparent;
+}
+
+.right {
+    border-right-color: transparent;
+}
+
+.top {
+    border-top-color: transparent;
+}
+
+.bottom {
+    border-bottom-color: transparent;
+}
+
+.symbolWhite {
+    color: white;
+}
+
+.symbolBlack {
+    color: #333;
+}

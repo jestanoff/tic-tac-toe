@@ -1,0 +1,14 @@
+.button {
+    background: none;
+    border: none;
+    color: #1485bd;
+    cursor: pointer;
+    font-family: 'Roboto-Medium';
+    font-size: 18px;
+    text-transform: uppercase;
+}
+
+.container {
+    padding: 10px 0;
+    text-align: center;
+}

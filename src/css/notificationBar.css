@@ -1,0 +1,16 @@
+.container {
+    color: #555;
+    font-family: 'Roboto-Medium';
+    font-size: 12px;
+    height: 16px;
+    margin: 10px 0;
+    text-align: center;
+}
+
+.icon {
+    display: inline-block;
+    height: 16px;
+    margin-right: 2px;
+    vertical-align: bottom;
+    width: 16px;
+}

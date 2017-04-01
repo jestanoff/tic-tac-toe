@@ -1,0 +1,10 @@
+.container {
+    box-sizing: border-box;
+    padding: 16px 130px;
+}
+
+.container:after {
+  clear: both;
+  content: "";
+  display: table;
+}

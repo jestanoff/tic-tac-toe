@@ -1,8 +1,10 @@
-import 'babel-polyfill';
-import React from 'react'; // eslint-disable-line no-unused-vars
-import ReactDOM from 'react-dom';
+import React from 'react';
+import { render } from 'react-dom';
+import TicTacToeApp from './js/TicTacToeApp';
 
-ReactDOM.render(
-    <h1>Tic Tac Toe Game</h1>,
+require('./css/font.css');
+
+render(
+    <TicTacToeApp />,
     document.getElementById('app-container'),
 );

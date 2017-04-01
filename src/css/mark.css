@@ -1,0 +1,15 @@
+.svgContainer {
+    display: inline-block;
+    overflow: hidden;
+    padding-bottom: 100%;
+    position: relative;
+    width: 100%;
+    text-align: center;
+}
+
+.svgContent {
+    display: inline-block;
+    left: 0;
+    position: absolute;
+    top: 0;
+}
