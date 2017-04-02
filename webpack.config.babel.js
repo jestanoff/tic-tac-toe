@@ -29,32 +29,42 @@ export default {
                     'eslint-loader',
                 ],
             },
-            // CSS
             {
                 test: /\.css$/,
-                loader: ExtractTextPlugin.extract([
-                    'css-loader?sourceMap&-minimize&modules',
-                    'importLoaders=1',
-                    'localIdentName=[name]__[local]___[hash:base64:5]',
-                ].join('&')),
+                use: ExtractTextPlugin.extract({
+                    fallback: 'style-loader',
+                    use: [
+                        {
+                            loader: 'css-loader',
+                            query: {
+                                sourceMap: true,
+                                minimize: true,
+                                modules: true,
+                                importLoaders: 1,
+                                localIdentName: '[name]__[local]___[hash:base64:5]',
+                            },
+                        },
+                        { loader: 'postcss-loader' },
+                    ],
+                }),
             },
             // Fonts
-            /* eslint-disable */
+            /* eslint-disable max-len */
             {
                 test: /\.woff(\?.*)?$/,
-                loader: 'url-loader?name=/fonts/[name].[ext]&limit=10000&mimetype=application/font-woff'
+                loader: 'url-loader?name=/fonts/[name].[ext]&limit=10000&mimetype=application/font-woff',
             },
             {
                 test: /\.woff2(\?.*)?$/,
-                loader: 'url-loader?name=/fonts/[name].[ext]&limit=10000&mimetype=application/font-woff2'
+                loader: 'url-loader?name=/fonts/[name].[ext]&limit=10000&mimetype=application/font-woff2',
             },
             {
                 test: /\.ttf(\?.*)?$/,
-                loader: 'url-loader?name=/fonts/[name].[ext]&limit=10000&mimetype=application/octet-stream'
+                loader: 'url-loader?name=/fonts/[name].[ext]&limit=10000&mimetype=application/octet-stream',
             },
             {
                 test: /\.eot(\?.*)?$/,
-                loader: 'url-loader?name=/fonts/[name].[ext]&limit=10000&mimetype=application/font-otf'
+                loader: 'url-loader?name=/fonts/[name].[ext]&limit=10000&mimetype=application/font-otf',
             }, /* eslint-enable */
             {
                 test: /\.svg([?#].*)?$/,
@@ -66,11 +76,23 @@ export default {
         new CopyWebpackPlugin([
             { from: path.join(dirSrc, 'index.html'), to: dirBuild },
         ]),
-        new ExtractTextPlugin('./styles/styles.css'),
+        new ExtractTextPlugin({
+            filename: './styles/styles.css',
+            allChunks: false,
+            ignoreOrder: true,
+        }),
     ],
-    stats: {
-        colors: true,
-    },
     devtool: 'source-map',
     context: __dirname,
+    devServer: {
+        stats: {
+            colors: true,
+            version: false,
+            hash: true,
+            timings: true,
+            chunks: false,
+            chunkModules: false,
+            children: false,
+        },
+    },
 };

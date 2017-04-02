@@ -1,9 +1,9 @@
-function getWinningLine(arr) {
+function findWinner(arr) {
     const match = arr.join('').match(/(1|2)\1{2}/);
     return match ? Number(match[1]) : -1;
 }
 
-export default function checkBoardSolved(board) {
+export default function isGameOver(board) {
     const vertical = [[], [], []];
     const diagonal = [[], []];
     // transform board into horizontal lines
@@ -24,10 +24,10 @@ export default function checkBoardSolved(board) {
 
     const lines = [...horizontal, ...vertical, ...diagonal];
     for (let i = 0; i < lines.length; i += 1) {
-        if (getWinningLine(lines[i]) > 0) {
-            return [getWinningLine(lines[i]), i];
+        if (findWinner(lines[i]) > 0) {
+            return { winner: findWinner(lines[i]), line: i };
         }
     }
     const isDrawGame = board.every(Boolean);
-    return isDrawGame ? 0 : -1;
+    return isDrawGame ? { winner: 0, line: -1 } : { winner: -1, line: -1 };
 }

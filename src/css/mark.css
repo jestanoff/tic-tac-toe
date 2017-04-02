@@ -1,4 +1,4 @@
-.svgContainer {
+.container {
     display: inline-block;
     overflow: hidden;
     padding-bottom: 100%;
@@ -7,9 +7,21 @@
     text-align: center;
 }
 
-.svgContent {
+.svg {
     display: inline-block;
     left: 0;
     position: absolute;
     top: 0;
+}
+
+.circle {
+    stroke-dasharray: 800;
+    stroke-dashoffset: -800;
+    animation: dash 250ms linear forwards;
+}
+
+@keyframes dash {
+    to {
+        stroke-dashoffset: 0;
+    }
 }

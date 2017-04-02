@@ -1,6 +1,6 @@
 import React, { PropTypes } from 'react';
 import styles from '../../css/winningLine.css';
-import { COORDS } from '../constants/constants';
+import { COORDS, DARK_GRAY } from '../constants/constants';
 
 const WinningLine = ({ line, handleClick }) => {
     const drawLine = (x1, y1, x2, y2) => (
@@ -11,7 +11,16 @@ const WinningLine = ({ line, handleClick }) => {
           preserveAspectRatio='xMinYMin meet'
           className={ styles.svgContent }
         >
-            <line x1={ x1 } y1={ y1 } x2={ x2 } y2={ y2 } strokeWidth='16' stroke='#444' />
+            <line x1={ x1 } y1={ y1 } x2={ x1 } y2={ y1 } strokeWidth='16' stroke={ DARK_GRAY } >
+                <animate
+                  attributeType='XML' attributeName='x2' from={ x1 } to={ x2 }
+                  dur='125ms' repeatCount='1' begin='250ms' fill='freeze'
+                />
+                <animate
+                  attributeType='XML' attributeName='y2' from={ y1 } to={ y2 }
+                  dur='125ms' repeatCount='1' begin='250ms' fill='freeze'
+                />
+            </line>
         </svg>
     );
 

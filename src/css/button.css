@@ -1,11 +1,19 @@
+@value fontPrimary from "./font.css";
+@value bluePrimary from "./colors.css";
+
 .button {
     background: none;
     border: none;
-    color: #1485bd;
+    color: bluePrimary;
     cursor: pointer;
-    font-family: 'Roboto-Medium';
+    font-family: fontPrimary;
     font-size: 18px;
     text-transform: uppercase;
+    width: 100%;
+}
+
+.button:focus {
+    outline:none;
 }
 
 .container {

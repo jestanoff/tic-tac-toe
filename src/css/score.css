@@ -1,0 +1,33 @@
+@value bluePrimary, greyPrimary, greyTertiary from "./colors.css";
+@value fontPrimary from "./font.css";
+
+.mark {
+    width: 28px;
+    height: 28px;
+    display: inline-block;
+}
+
+.container {
+    background: white;
+    display: inline-block;
+    width: 48%;
+    box-shadow: 0 0 1px greyTertiary;
+    border-bottom: 3px solid transparent;
+    box-sizing: border-box;
+    padding: 5px 4% 0 2%;
+    margin: 1%;
+}
+
+.active {
+    composes: container;
+    border-bottom-color: bluePrimary;
+    box-shadow: 0 0 6px greyTertiary;
+}
+
+.score {
+    color: greyPrimary;
+    font-size: 20px;
+    font-family: fontPrimary;
+    float: right;
+    padding-top: 2px;
+}

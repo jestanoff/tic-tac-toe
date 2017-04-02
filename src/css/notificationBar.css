@@ -1,6 +1,9 @@
+@value greyPrimary from "./colors.css";
+@value fontPrimary from "./font.css";
+
 .container {
-    color: #555;
-    font-family: 'Roboto-Medium';
+    color: greyPrimary;
+    font-family: fontPrimary;
     font-size: 12px;
     height: 16px;
     margin: 10px 0;

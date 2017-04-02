@@ -1,6 +1,11 @@
+@value fontPrimary from "./font.css";
+@value greyQuaternary from "./colors.css";
+
 .header {
-    font-family: 'Roboto-Medium';
+    font-family: fontPrimary;
     margin: 0;
-    padding: 15px 0 5px;
+    color: greyQuaternary;
+    padding-bottom: 12px;
     text-align: center;
+    font-size: 26px;
 }

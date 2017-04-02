@@ -1,5 +1,5 @@
-import checkBoardSolved from './checkBoardSolved';
-import computerAI from './computerAI';
+import isGameOver from './isGameOver';
+import computeAIMove from './computeAIMove';
 import getNotification from './miscHelpers';
 
-export { checkBoardSolved, computerAI, getNotification };
+export { isGameOver, computeAIMove, getNotification };

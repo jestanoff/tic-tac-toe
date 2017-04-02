@@ -9,3 +9,5 @@
     font-weight: normal;
     font-style: normal;
 }
+
+@value fontPrimary: 'Roboto-Medium', Arial, sans-serif;

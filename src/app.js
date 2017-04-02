@@ -2,9 +2,9 @@ import React from 'react';
 import { render } from 'react-dom';
 import TicTacToeApp from './js/TicTacToeApp';
 
-require('./css/font.css');
+const container = document.getElementById('app-container');
 
 render(
     <TicTacToeApp />,
-    document.getElementById('app-container'),
+    container,
 );

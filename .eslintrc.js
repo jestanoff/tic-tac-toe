@@ -26,6 +26,7 @@ module.exports = {
     "react/jsx-indent": ["warn", 4],
     "react/jsx-curly-spacing": ["error", "always"],
     "jsx-a11y/no-static-element-interactions" : ["off"],
+    "react/no-array-index-key": ["off"],
     'jsx-quotes': ["error", "prefer-single"],
     /* Advanced Rules*/
     "no-unused-expressions": "warn",

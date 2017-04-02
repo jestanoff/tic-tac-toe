@@ -10,7 +10,8 @@ const Cell = ({ id, cssClasses, handleCellClick, status }) => {
 
     return (
         <article className={ generateStyles() } onClick={ () => handleCellClick(id) }>
-            { status ? status === PLAYER_X ? <Mark type='cross' /> : <Mark type='circle' /> : '' }
+            { status ? status === PLAYER_X ?
+                <Mark type='cross' isAnimated /> : <Mark type='circle' isAnimated /> : '' }
         </article>
     );
 };

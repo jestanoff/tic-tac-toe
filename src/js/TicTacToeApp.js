@@ -4,49 +4,57 @@ import Board from './containers/Board';
 import Header from './components/Header';
 import NotificationBar from './components/NotificationBar';
 import WinningLine from './components/WinningLine';
+import ScoresSection from './containers/ScoresSection';
+import Select from './components/Select';
 import styles from '../css/ticTacToe.css';
-import { checkBoardSolved, computerAI, getNotification } from './helpers';
+import { isGameOver, computeAIMove, getNotification } from './helpers';
 import {
-        AI_WAITING_TIME, DRAW, PLAYER_O, PLAYER_X, NUM_OF_CELLS, SYMBOLS, UNRESOLVED,
-    } from './constants/constants';
+  AI_WAITING_TIME, DRAW, PLAYER_O, PLAYER_X, NUM_OF_CELLS, SYMBOLS, UNRESOLVED, EASY, HARD, RESET,
+} from './constants/constants';
 
 const initialState = {
     boardStatus: Array(NUM_OF_CELLS).fill(0),
-    notification: 'Start game by clicking any cell',
+    difficulty: EASY,
     isUIdisabled: false,
+    notification: 'Start game by clicking on any cell',
+    outcome: { winner: UNRESOLVED, line: UNRESOLVED },
     playerTurn: PLAYER_X,
-    outcome: UNRESOLVED,
 };
 
 class TicTacToeApp extends Component {
     constructor(props) {
         super(props);
         this.state = initialState;
+        this.timerAI = 0;
     }
 
-    resetGame = () => this.setState(initialState);
+    resetGame = () => {
+        clearTimeout(this.timerAI);
+        this.setState(Object.assign(initialState, { difficulty: this.state.difficulty }));
+    }
 
     handleCellClick = (id) => {
         const { boardStatus, isUIdisabled, outcome, playerTurn } = this.state;
         if (boardStatus[id] === 0 && !isUIdisabled) {
             const nextBoardStatus = boardStatus.map((status, i) => (id === i ? PLAYER_X : status));
-            const nextOutcome = checkBoardSolved(nextBoardStatus);
+            const nextOutcome = isGameOver(nextBoardStatus);
             const nexPlayerTurn = playerTurn === PLAYER_X ? PLAYER_O : PLAYER_X;
             this.setState({
                 boardStatus: nextBoardStatus,
                 isUIdisabled: true,
-                notification: getNotification(nextOutcome),
+                notification: getNotification(nextOutcome.winner),
                 playerTurn: nexPlayerTurn,
                 outcome: nextOutcome,
             }, () => {
-                if (nextOutcome === UNRESOLVED) {
-                    setTimeout(() => {
-                        const AIBoardStatus = computerAI(nextBoardStatus);
-                        const AIOutcome = checkBoardSolved(AIBoardStatus);
+                if (nextOutcome.winner === UNRESOLVED) {
+                    this.timerAI = setTimeout(() => {
+                        const { difficulty } = this.state;
+                        const AIBoardStatus = computeAIMove(nextBoardStatus, difficulty);
+                        const AIOutcome = isGameOver(AIBoardStatus);
                         this.setState({
                             boardStatus: AIBoardStatus,
                             isUIdisabled: false,
-                            notification: getNotification(AIOutcome),
+                            notification: getNotification(AIOutcome.winner),
                             playerTurn: nexPlayerTurn === PLAYER_X ? PLAYER_O : PLAYER_X,
                             outcome: AIOutcome,
                         });
@@ -54,27 +62,41 @@ class TicTacToeApp extends Component {
                 }
             });
         }
+        if (outcome.winner === DRAW) this.resetGame();
+    }
 
-        if (outcome === DRAW) this.resetGame();
+    handleDifficultyChange = (event) => {
+        this.setState({ difficulty: event.target.value,
+            outcome: { winner: UNRESOLVED, line: UNRESOLVED } },
+            () => this.resetGame());
     }
 
     render() {
-        const { outcome, playerTurn, boardStatus } = this.state;
-        const showIcon = boardStatus.some(Boolean) && outcome !== 0;
-        const icon = SYMBOLS[outcome[0]] || SYMBOLS[playerTurn];
-        const showWinningLine = outcome[1];
+        const { boardStatus, difficulty, outcome, playerTurn } = this.state;
+        const showIcon = boardStatus.some(Boolean) && outcome.winner !== 0;
+        const icon = SYMBOLS[outcome.winner] || SYMBOLS[playerTurn];
+        const showWinningLine = outcome.line > UNRESOLVED;
 
         return (
             <div className={ styles.container }>
+                <Select
+                  current={ difficulty }
+                  options={ [EASY, HARD] }
+                  onChange={ this.handleDifficultyChange }
+                />
                 <Header title='Tic Tac Toe' />
+                <ScoresSection
+                  outcome={ outcome.winner }
+                  playerTurn={ playerTurn }
+                />
                 <NotificationBar
                   icon={ icon }
                   msg={ this.state.notification }
                   showIcon={ showIcon }
                 />
                 <div className={ styles.board }>
-                    { showWinningLine !== undefined && <WinningLine
-                      line={ showWinningLine }
+                    { showWinningLine && <WinningLine
+                      line={ outcome.line }
                       handleClick={ this.resetGame }
                     />}
                     <Board
@@ -82,7 +104,7 @@ class TicTacToeApp extends Component {
                       handleCellClick={ this.handleCellClick }
                     />
                 </div>
-                <Button text='Reset' handleClick={ this.resetGame } />
+                <Button text={ RESET } handleClick={ this.resetGame } />
             </div>
         );
     }
