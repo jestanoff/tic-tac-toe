@@ -1,9 +1,5 @@
 .container {
     box-sizing: border-box;
-    max-width: 240px;
-    min-width: 200px;
-    margin: 0 auto;
-    padding: 16px 0;
 }
 
 .container:after {

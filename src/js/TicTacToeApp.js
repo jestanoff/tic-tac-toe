@@ -94,16 +94,18 @@ class TicTacToeApp extends Component {
                   msg={ this.state.notification }
                   showIcon={ showIcon }
                 />
-                <div className={ styles.board }>
-                    { showWinningLine && <WinningLine
-                      line={ outcome.line }
-                      handleClick={ this.resetGame }
-                    />}
-                    <Board
-                      boardStatus={ boardStatus }
-                      handleCellClick={ this.handleCellClick }
-                    />
-                </div>
+                <section className={ styles.board }>
+                    <div className={ styles.innerContainer }>
+                        { showWinningLine && <WinningLine
+                          line={ outcome.line }
+                          handleClick={ this.resetGame }
+                        />}
+                        <Board
+                          boardStatus={ boardStatus }
+                          handleCellClick={ this.handleCellClick }
+                        />
+                    </div>
+                </section>
                 <Button text={ RESET } handleClick={ this.resetGame } />
             </div>
         );
