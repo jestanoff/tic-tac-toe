@@ -90,7 +90,7 @@ window.startFireworks = function() {
 
     const canvas = document.getElementById('canvas');
     const mainContainer = document.getElementById('main-container');
-    const context = canvas.getContext('2d');
+    let context = canvas.getContext('2d');
     canvas.width = mainContainer.offsetWidth;
     canvas.height = mainContainer.offsetHeight;
     const width = canvas.width;
@@ -115,7 +115,7 @@ window.startFireworks = function() {
         const p = new Particle(width / 2, height, 10 + 5 * Math.random(), (1.4 + Math.random() * 0.2) * Math.PI);
         p.size = size / 2;
         p.hue = hue;
-        p.lightness = 1000;
+        p.lightness = 100;
         p.setGravity(0.1);
         p.setFriction(0.98);
 
@@ -134,7 +134,7 @@ window.startFireworks = function() {
     }
 
 
-    window.setInterval(() => {
+    const timer = window.setInterval(() => {
         let i;
 
         if (count % 2 === 0) {
@@ -156,7 +156,7 @@ window.startFireworks = function() {
         }
 
         count += 1;
-    }, 200);
+    }, 500);
 
     function update() {
         stats.begin();
@@ -195,7 +195,7 @@ window.startFireworks = function() {
             if (Math.random() < 0.001 || Math.sqrt(Math.pow((mouseX - p.position.x), 2) + Math.pow(mouseY - p.position.y, 2)) < 3 * p.size) {
                 p.explode = true;
 
-                for (j = 0; j < 100; j += 1) {
+                for (j = 0; j < 50; j += 1) {
                     createFirefork(p.position.x, p.position.y, p.size, p.hue);
                 }
             }
@@ -235,4 +235,9 @@ window.startFireworks = function() {
     }
 
     update();
+
+    setTimeout(() => {
+        clearInterval(timer);
+        console.log('Interval cleared!');
+    }, 30000)
 }

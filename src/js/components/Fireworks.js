@@ -4,7 +4,11 @@ import { canvas } from '../../css/fireworks.css';
 class Fireworks extends Component {
     componentDidMount() {
         window.startFireworks();
-        setTimeout(this.props.handleClick, 60000);
+        this.timer = setTimeout(this.props.handleClick, 30000);
+    }
+
+    componentWillUnmount() {
+        clearTimeout(this.timer);
     }
 
     render() {
