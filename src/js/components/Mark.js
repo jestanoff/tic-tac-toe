@@ -5,17 +5,22 @@ import { DARK_GRAY, WHITE } from '../constants/constants';
 const Mark = ({ isAnimated, overrideColor, type }) => {
     const circle = () => {
         const color = overrideColor || WHITE;
-        const className = isAnimated ? `${styles.svg} ${styles.circle}` : styles.svg;
         return (
             <svg
               version='1.1'
               viewBox='0 0 500 500'
               preserveAspectRatio='xMinYMin meet'
-              className={ className }
+              className={ styles.svg }
             >
                 <circle
                   cx='250' cy='250' r='125' stroke={ color } strokeWidth='45' fill='transparent'
-                />
+                  strokeDasharray='800' strokeDashoffset='-800'
+                >
+                    <animate
+                      attributeType='XML' attributeName='stroke-dashoffset' from='-800'
+                      to='0' dur={ isAnimated ? '250ms' : '1ms' } repeatCount='1' fill='freeze'
+                    />
+                </circle>
             </svg>
         );
     };
