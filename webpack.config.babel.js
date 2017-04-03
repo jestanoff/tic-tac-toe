@@ -12,11 +12,12 @@ if (!fs.existsSync(dirBuild)) {
 
 export default {
     entry: {
-        app: [path.resolve(__dirname, './src/app.js')],
+        app: [path.join(dirSrc, 'app.js')],
+        fireworks: [path.join(dirSrc, './js/helpers/fireworks.js')],
     },
     output: {
         path: dirBuild,
-        filename: '[name].bundle.js',
+        filename: './js/[name].bundle.js',
     },
     module: {
         rules: [

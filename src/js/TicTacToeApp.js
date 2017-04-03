@@ -6,6 +6,7 @@ import NotificationBar from './components/NotificationBar';
 import WinningLine from './components/WinningLine';
 import ScoresSection from './containers/ScoresSection';
 import Select from './components/Select';
+import Fireworks from './components/Fireworks';
 import styles from '../css/ticTacToe.css';
 import { isGameOver, computeAIMove, getNotification } from './helpers';
 import {
@@ -78,7 +79,8 @@ class TicTacToeApp extends Component {
         const showWinningLine = outcome.line > UNRESOLVED;
 
         return (
-            <div className={ styles.container }>
+            <div className={ styles.container } id='main-container'>
+                { outcome.winner === PLAYER_X && <Fireworks handleClick={ this.resetGame } /> }
                 <Select
                   current={ difficulty }
                   options={ [EASY, HARD] }
