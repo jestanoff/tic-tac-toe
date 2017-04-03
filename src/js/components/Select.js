@@ -1,15 +1,24 @@
 import React, { PropTypes } from 'react';
+import MenuItem from 'material-ui/MenuItem';
+import SelectField from 'material-ui/SelectField';
 import styles from '../../css/select.css';
 
-const Select = ({ current, onChange, options }) => (
-    <section className={ styles.container } >
-        <select value={ current } onChange={ onChange } className={ styles.select }>
-            { options.map((option, i) =>
-                <option value={ option } key={ i }>{ option }</option>,
-            )}
-        </select>
-    </section>
-);
+const Select = ({ current, onChange, options }) => {
+    const children = options.map((option, i) =>
+        <MenuItem value={ option } key={ i } primaryText={ option } />,
+    );
+
+    return (
+        <section className={ styles.container } >
+            <SelectField
+              value={ current } onChange={ onChange } style={ { width: '30%' } }
+              selectedMenuItemStyle={ { color: '#1485bd' } }
+            >
+                { children }
+            </SelectField>
+        </section>
+    );
+};
 
 Select.propTypes = {
     current: PropTypes.string.isRequired,

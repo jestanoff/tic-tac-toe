@@ -20,6 +20,7 @@ const initialState = {
     notification: 'Start game by clicking on any cell',
     outcome: { winner: UNRESOLVED, line: UNRESOLVED },
     playerTurn: PLAYER_X,
+    history: [{ board: Array(NUM_OF_CELLS).fill(0) }],
 };
 
 class TicTacToeApp extends Component {
@@ -35,9 +36,10 @@ class TicTacToeApp extends Component {
     }
 
     handleCellClick = (id) => {
-        const { boardStatus, isUIdisabled, outcome, playerTurn } = this.state;
+        const { boardStatus, isUIdisabled, outcome, playerTurn, history } = this.state;
         if (boardStatus[id] === 0 && !isUIdisabled) {
-            const nextBoardStatus = boardStatus.map((status, i) => (id === i ? PLAYER_X : status));
+            const nextBoardStatus = boardStatus.slice();
+            nextBoardStatus[id] = PLAYER_X;
             const nextOutcome = isGameOver(nextBoardStatus);
             const nexPlayerTurn = playerTurn === PLAYER_X ? PLAYER_O : PLAYER_X;
             this.setState({
@@ -46,10 +48,11 @@ class TicTacToeApp extends Component {
                 notification: getNotification(nextOutcome.winner),
                 playerTurn: nexPlayerTurn,
                 outcome: nextOutcome,
+                history: [...history, { board: nextBoardStatus }],
             }, () => {
                 if (nextOutcome.winner === UNRESOLVED) {
                     this.timerAI = setTimeout(() => {
-                        const { difficulty } = this.state;
+                        const { difficulty, history: secondHistory } = this.state;
                         const AIBoardStatus = computeAIMove(nextBoardStatus, difficulty);
                         const AIOutcome = isGameOver(AIBoardStatus);
                         this.setState({
@@ -58,6 +61,7 @@ class TicTacToeApp extends Component {
                             notification: getNotification(AIOutcome.winner),
                             playerTurn: nexPlayerTurn === PLAYER_X ? PLAYER_O : PLAYER_X,
                             outcome: AIOutcome,
+                            history: [...secondHistory, { board: AIBoardStatus }],
                         });
                     }, AI_WAITING_TIME);
                 }
@@ -66,8 +70,8 @@ class TicTacToeApp extends Component {
         if (outcome.winner === DRAW) this.resetGame();
     }
 
-    handleDifficultyChange = (event) => {
-        this.setState({ difficulty: event.target.value,
+    handleDifficultyChange = (event, index, value) => {
+        this.setState({ difficulty: value,
             outcome: { winner: UNRESOLVED, line: UNRESOLVED } },
             () => this.resetGame());
     }
