@@ -11,7 +11,7 @@ const Select = ({ current, onChange, options }) => {
     return (
         <section className={ styles.container } >
             <SelectField
-              value={ current } onChange={ onChange } style={ { width: '30%' } }
+              value={ current } onChange={ onChange }
               selectedMenuItemStyle={ { color: '#1485bd' } }
             >
                 { children }
