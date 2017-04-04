@@ -12,6 +12,7 @@ import { isGameOver, computeAIMove, getNotification } from './helpers';
 import {
   AI_WAITING_TIME, DRAW, PLAYER_O, PLAYER_X, NUM_OF_CELLS, SYMBOLS, UNRESOLVED, EASY, HARD, RESET,
 } from './constants/constants';
+import globalFontStyle from '../css/font.css'; // eslint-disable-line
 
 const initialState = {
     boardStatus: Array(NUM_OF_CELLS).fill(0),

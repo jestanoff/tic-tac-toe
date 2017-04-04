@@ -237,6 +237,6 @@ window.startFireworks = function() {
     update();
 
     setTimeout(() => {
-        console.log('Interval cleared!');
+        clearInterval(timer);
     }, 30000)
 }
