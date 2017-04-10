@@ -1,4 +1,5 @@
-import React, { PropTypes } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 import Cell from '../components/Cell';
 import styles from '../../css/board.css';
 import { CSS_CLASSES, NUM_OF_CELLS } from '../constants/constants';

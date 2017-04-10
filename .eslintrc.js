@@ -6,7 +6,15 @@ module.exports = {
   "env": {
     "browser": true,
     "es6": true,
-    "jquery": true
+    "jquery": true,
+    "mocha": true
+  },
+  "globals": {
+    "shallow": true,
+    "mount": true,
+    "sinon": true,
+    "expect": true,
+    "React": true,
   },
   "extends": "airbnb",
   "parserOptions": {

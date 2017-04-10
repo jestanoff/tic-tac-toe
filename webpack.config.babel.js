@@ -96,4 +96,11 @@ export default {
             children: false,
         },
     },
+    // Ignore these as required by Enzyme http://airbnb.io/enzyme/docs/guides/webpack.html
+    externals: {
+        cheerio: 'window',
+        'react/addons': true,
+        'react/lib/ExecutionEnvironment': true,
+        'react/lib/ReactContext': true,
+    },
 };
