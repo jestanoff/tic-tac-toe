@@ -1,8 +1,9 @@
-import React, { PropTypes } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 import styles from '../../css/winningLine.css';
-import { COORDS, DARK_GRAY } from '../constants/constants';
+import { COORDS } from '../constants/constants';
 
-const WinningLine = ({ line, handleClick }) => {
+const WinningLine = ({ color, line, handleClick }) => {
     const drawLine = (x1, y1, x2, y2) => (
         <svg
           onClick={ handleClick }
@@ -11,7 +12,7 @@ const WinningLine = ({ line, handleClick }) => {
           preserveAspectRatio='xMinYMin meet'
           className={ styles.svgContent }
         >
-            <line x1={ x1 } y1={ y1 } x2={ x1 } y2={ y1 } strokeWidth='16' stroke={ DARK_GRAY } >
+            <line x1={ x1 } y1={ y1 } x2={ x1 } y2={ y1 } strokeWidth='16' stroke={ color } >
                 <animate
                   attributeType='XML' attributeName='x2' from={ x1 } to={ x2 }
                   dur='125ms' repeatCount='1' begin='250ms' fill='freeze'
@@ -34,6 +35,7 @@ const WinningLine = ({ line, handleClick }) => {
 };
 
 WinningLine.propTypes = {
+    color: PropTypes.string.isRequired,
     line: PropTypes.number.isRequired,
     handleClick: PropTypes.func.isRequired,
 };

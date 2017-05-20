@@ -11,8 +11,9 @@ import styles from '../css/ticTacToe.css';
 import { isGameOver, computeAIMove, getNotification } from './helpers';
 import {
   AI_WAITING_TIME, DRAW, PLAYER_O, PLAYER_X, NUM_OF_CELLS, SYMBOLS, UNRESOLVED, EASY, HARD, RESET,
+  DARK_GRAY, WHITE,
 } from './constants/constants';
-import globalFontStyle from '../css/font.css'; // eslint-disable-line
+import '../css/font.css';
 
 const initialState = {
     boardStatus: new Array(NUM_OF_CELLS).fill(0),
@@ -27,45 +28,46 @@ const initialState = {
 class TicTacToeApp extends Component {
     constructor(props) {
         super(props);
-        this.state = initialState;
+        this.state = Object.assign({}, initialState);
         this.timerAI = 0;
+    }
+
+    componentDidUpdate() {
+        const { boardStatus, difficulty, outcome, playerTurn, history } = this.state;
+        if (outcome.winner === UNRESOLVED && playerTurn === PLAYER_O) {
+            this.timerAI = setTimeout(() => {
+                const AIBoardStatus = computeAIMove(boardStatus, difficulty);
+                const AIOutcome = isGameOver(AIBoardStatus);
+                this.setState({
+                    boardStatus: AIBoardStatus,
+                    isUIdisabled: false,
+                    notification: getNotification(AIOutcome.winner),
+                    playerTurn: PLAYER_X,
+                    outcome: AIOutcome,
+                    history: [...history, { board: AIBoardStatus }],
+                });
+            }, AI_WAITING_TIME);
+        }
     }
 
     resetGame = () => {
         clearTimeout(this.timerAI);
-        this.setState(Object.assign(initialState, { difficulty: this.state.difficulty }));
+        this.setState(Object.assign({}, initialState, { difficulty: this.state.difficulty }));
     };
 
-    handleCellClick = (id) => {
-        const { boardStatus, isUIdisabled, outcome, playerTurn, history } = this.state;
-        if (boardStatus[id] === 0 && !isUIdisabled) {
+    handleCellClick = (cellIndex) => {
+        const { boardStatus, isUIdisabled, outcome, history } = this.state;
+        if (boardStatus[cellIndex] === 0 && !isUIdisabled) {
             const nextBoardStatus = boardStatus.slice();
-            nextBoardStatus[id] = PLAYER_X;
+            nextBoardStatus[cellIndex] = PLAYER_X;
             const nextOutcome = isGameOver(nextBoardStatus);
-            const nexPlayerTurn = playerTurn === PLAYER_X ? PLAYER_O : PLAYER_X;
             this.setState({
                 boardStatus: nextBoardStatus,
                 isUIdisabled: true,
                 notification: getNotification(nextOutcome.winner),
-                playerTurn: nexPlayerTurn,
+                playerTurn: PLAYER_O,
                 outcome: nextOutcome,
                 history: [...history, { board: nextBoardStatus }],
-            }, () => {
-                if (nextOutcome.winner === UNRESOLVED) {
-                    this.timerAI = setTimeout(() => {
-                        const { difficulty, history: secondHistory } = this.state;
-                        const AIBoardStatus = computeAIMove(nextBoardStatus, difficulty);
-                        const AIOutcome = isGameOver(AIBoardStatus);
-                        this.setState({
-                            boardStatus: AIBoardStatus,
-                            isUIdisabled: false,
-                            notification: getNotification(AIOutcome.winner),
-                            playerTurn: nexPlayerTurn === PLAYER_X ? PLAYER_O : PLAYER_X,
-                            outcome: AIOutcome,
-                            history: [...secondHistory, { board: AIBoardStatus }],
-                        });
-                    }, AI_WAITING_TIME);
-                }
             });
         }
         if (outcome.winner === DRAW) this.resetGame();
@@ -107,6 +109,7 @@ class TicTacToeApp extends Component {
                         { showWinningLine && <WinningLine
                           line={ outcome.line }
                           handleClick={ this.resetGame }
+                          color={ outcome.winner === PLAYER_X ? DARK_GRAY : WHITE }
                         />}
                         <Board
                           boardStatus={ boardStatus }

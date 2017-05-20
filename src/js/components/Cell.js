@@ -1,4 +1,5 @@
-import React, { PropTypes } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 import Mark from './Mark';
 import styles from '../../css/cell.css';
 import { PLAYER_X } from '../constants/constants';

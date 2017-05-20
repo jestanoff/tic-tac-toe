@@ -1,4 +1,5 @@
-import React, { Component, PropTypes } from 'react';
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import Score from '../components/Score';
 import styles from '../../css/scoresSection.css';
 import { SYMBOLS, PLAYER_X, PLAYER_O, M_DASH } from '../constants/constants';
