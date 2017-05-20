@@ -13,3 +13,9 @@ Live app [jestanoff.github.io/tic-tac-toe/](https://jestanoff.github.io/tic-tac-
 
 ### Run the dev server
 `npm start`
+
+### Run build
+`npm run build`
+
+### Run test suite
+`npm run test`
