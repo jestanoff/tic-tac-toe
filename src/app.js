@@ -1,7 +1,6 @@
 import React from 'react';
 import { render } from 'react-dom';
 import injectTapEventPlugin from 'react-tap-event-plugin';
-import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import TicTacToeApp from './js/TicTacToeApp';
 
 // Needed for onTouchTap
@@ -10,9 +9,7 @@ injectTapEventPlugin();
 
 const container = document.getElementById('app-container');
 const App = () => (
-    <MuiThemeProvider>
-        <TicTacToeApp />
-    </MuiThemeProvider>
+    <TicTacToeApp />
 );
 
 render(

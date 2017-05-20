@@ -15,13 +15,13 @@ import {
 import globalFontStyle from '../css/font.css'; // eslint-disable-line
 
 const initialState = {
-    boardStatus: Array(NUM_OF_CELLS).fill(0),
+    boardStatus: new Array(NUM_OF_CELLS).fill(0),
     difficulty: EASY,
     isUIdisabled: false,
     notification: 'Start game by clicking on any cell',
     outcome: { winner: UNRESOLVED, line: UNRESOLVED },
     playerTurn: PLAYER_X,
-    history: [{ board: Array(NUM_OF_CELLS).fill(0) }],
+    history: [{ board: new Array(NUM_OF_CELLS).fill(0) }],
 };
 
 class TicTacToeApp extends Component {
@@ -34,7 +34,7 @@ class TicTacToeApp extends Component {
     resetGame = () => {
         clearTimeout(this.timerAI);
         this.setState(Object.assign(initialState, { difficulty: this.state.difficulty }));
-    }
+    };
 
     handleCellClick = (id) => {
         const { boardStatus, isUIdisabled, outcome, playerTurn, history } = this.state;
@@ -69,13 +69,14 @@ class TicTacToeApp extends Component {
             });
         }
         if (outcome.winner === DRAW) this.resetGame();
-    }
+    };
 
-    handleDifficultyChange = (event, index, value) => {
-        this.setState({ difficulty: value,
-            outcome: { winner: UNRESOLVED, line: UNRESOLVED } },
-            () => this.resetGame());
-    }
+    handleDifficultyChange = (event) => {
+        this.setState({
+            difficulty: event.target.value,
+            outcome: { winner: UNRESOLVED, line: UNRESOLVED },
+        }, () => this.resetGame());
+    };
 
     render() {
         const { boardStatus, difficulty, outcome, playerTurn } = this.state;
