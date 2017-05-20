@@ -5,7 +5,7 @@ import fs from 'fs';
 
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 
-const dirBuild = path.resolve(__dirname, './build');
+const dirBuild = path.resolve(__dirname, './docs');
 const dirSrc = path.resolve(__dirname, './src');
 
 if (!fs.existsSync(dirBuild)) {
@@ -15,7 +15,6 @@ if (!fs.existsSync(dirBuild)) {
 export default {
     entry: {
         app: [path.join(dirSrc, 'app.js')],
-        fireworks: [path.join(dirSrc, './js/helpers/fireworks.js')],
     },
     output: {
         path: dirBuild,

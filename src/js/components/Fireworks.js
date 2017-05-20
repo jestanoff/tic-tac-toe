@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { canvas } from '../../css/fireworks.css';
+import { startFireworks } from '../helpers';
 
 class Fireworks extends Component {
     componentDidMount() {
-        window.startFireworks();
+        startFireworks();
         this.timer = setTimeout(this.props.handleClick, 30000);
     }
 

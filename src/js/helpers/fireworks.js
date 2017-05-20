@@ -1,5 +1,7 @@
 /* eslint-disable */
-window.startFireworks = function() {
+import Stats from '../vendors/stats';
+
+export default function() {
     (function (window) {
         const Particle = function (x, y, speed, direction) {
             this.initialize(x, y, speed, direction);
