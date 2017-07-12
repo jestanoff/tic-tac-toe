@@ -4,16 +4,23 @@ import Score from '../components/Score';
 import styles from '../../css/scoresSection.css';
 import { SYMBOLS, PLAYER_X, PLAYER_O, M_DASH } from '../constants/constants';
 
+
 class ScoresSection extends Component {
     constructor(props) {
         super(props);
-        this.state = { [PLAYER_X]: M_DASH, [PLAYER_O]: M_DASH };
+        const store = localStorage;
+        this.state = {
+            [PLAYER_X]: store.playerX || M_DASH,
+            [PLAYER_O]: store.playerO || M_DASH,
+        };
     }
 
     componentWillReceiveProps({ outcome }) {
         if (outcome === PLAYER_X) {
+            localStorage.playerX = (+localStorage.playerX || 0) + 1;
             this.setState({ [PLAYER_X]: this.incrementScore(PLAYER_X) });
         } else if (outcome === PLAYER_O) {
+            localStorage.playerY = (+localStorage.playerY || 0) + 1;
             this.setState({ [PLAYER_O]: this.incrementScore(PLAYER_O) });
         }
     }

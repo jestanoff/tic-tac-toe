@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import CSSTransitionGroup from 'react-transition-group/CSSTransitionGroup';
 import Button from './components/Button';
 import Board from './containers/Board';
 import Header from './components/Header';
@@ -18,7 +19,7 @@ import '../css/font.css';
 const initialState = {
     boardStatus: new Array(NUM_OF_CELLS).fill(0),
     difficulty: EASY,
-    isUIdisabled: false,
+    isBoardUiDisabled: false,
     notification: 'Start game by clicking on any cell',
     outcome: { winner: UNRESOLVED, line: UNRESOLVED },
     playerTurn: PLAYER_X,
@@ -40,7 +41,7 @@ class TicTacToeApp extends Component {
                 const AIOutcome = isGameOver(AIBoardStatus);
                 this.setState({
                     boardStatus: AIBoardStatus,
-                    isUIdisabled: false,
+                    isBoardUiDisabled: false,
                     notification: getNotification(AIOutcome.winner),
                     playerTurn: PLAYER_X,
                     outcome: AIOutcome,
@@ -51,19 +52,23 @@ class TicTacToeApp extends Component {
     }
 
     resetGame = () => {
+        const cx = this.board.classList;
+        cx.contains(styles.flip) ? cx.remove(styles.flip) : cx.add(styles.flip); // eslint-disable-line no-unused-expressions
         clearTimeout(this.timerAI);
-        this.setState(Object.assign({}, initialState, { difficulty: this.state.difficulty }));
+        setTimeout(() => {
+            this.setState(Object.assign({}, initialState, { difficulty: this.state.difficulty }));
+        }, 200);
     };
 
     handleCellClick = (cellIndex) => {
-        const { boardStatus, isUIdisabled, outcome, history } = this.state;
-        if (boardStatus[cellIndex] === 0 && !isUIdisabled) {
+        const { boardStatus, isBoardUiDisabled, outcome, history } = this.state;
+        if (boardStatus[cellIndex] === 0 && !isBoardUiDisabled) {
             const nextBoardStatus = boardStatus.slice();
             nextBoardStatus[cellIndex] = PLAYER_X;
             const nextOutcome = isGameOver(nextBoardStatus);
             this.setState({
                 boardStatus: nextBoardStatus,
-                isUIdisabled: true,
+                isBoardUiDisabled: true,
                 notification: getNotification(nextOutcome.winner),
                 playerTurn: PLAYER_O,
                 outcome: nextOutcome,
@@ -87,38 +92,46 @@ class TicTacToeApp extends Component {
         const showWinningLine = outcome.line > UNRESOLVED;
 
         return (
-            <div className={ styles.container } id='main-container'>
-                { outcome.winner === PLAYER_X && <Fireworks handleClick={ this.resetGame } /> }
-                <Select
-                  current={ difficulty }
-                  options={ [EASY, HARD] }
-                  onChange={ this.handleDifficultyChange }
-                />
-                <Header title='Tic Tac Toe' />
-                <ScoresSection
-                  outcome={ outcome.winner }
-                  playerTurn={ playerTurn }
-                />
-                <NotificationBar
-                  icon={ icon }
-                  msg={ this.state.notification }
-                  showIcon={ showIcon }
-                />
-                <section className={ styles.board }>
-                    <div className={ styles.innerContainer }>
-                        { showWinningLine && <WinningLine
-                          line={ outcome.line }
-                          handleClick={ this.resetGame }
-                          color={ outcome.winner === PLAYER_X ? DARK_GRAY : WHITE }
-                        />}
-                        <Board
-                          boardStatus={ boardStatus }
-                          handleCellClick={ this.handleCellClick }
-                        />
-                    </div>
-                </section>
-                <Button text={ RESET } handleClick={ this.resetGame } />
-            </div>
+            <CSSTransitionGroup
+              transitionName='example'
+              transitionAppear={ false }
+              transitionAppearTimeout={ 300 }
+              transitionEnter={ false }
+              transitionLeave={ false }
+            >
+                <div className={ styles.container } id='main-container'>
+                    { outcome.winner === PLAYER_X && <Fireworks handleClick={ this.resetGame } /> }
+                    <Select
+                      current={ difficulty }
+                      options={ [EASY, HARD] }
+                      onChange={ this.handleDifficultyChange }
+                    />
+                    <Header title='Tic Tac Toe' />
+                    <ScoresSection
+                      outcome={ outcome.winner }
+                      playerTurn={ playerTurn }
+                    />
+                    <NotificationBar
+                      icon={ icon }
+                      msg={ this.state.notification }
+                      showIcon={ showIcon }
+                    />
+                    <section className={ styles.board } ref={ (board) => { this.board = board; } }>
+                        <div className={ styles.innerContainer }>
+                            { showWinningLine && <WinningLine
+                              line={ outcome.line }
+                              handleClick={ this.resetGame }
+                              color={ outcome.winner === PLAYER_X ? DARK_GRAY : WHITE }
+                            />}
+                            <Board
+                              boardStatus={ boardStatus }
+                              handleCellClick={ this.handleCellClick }
+                            />
+                        </div>
+                    </section>
+                    <Button text={ RESET } handleClick={ this.resetGame } />
+                </div>
+            </CSSTransitionGroup>
         );
     }
 }

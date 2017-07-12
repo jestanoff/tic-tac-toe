@@ -14,7 +14,7 @@ if (!fs.existsSync(dirBuild)) {
 
 export default {
     entry: {
-        app: [path.join(dirSrc, 'app.js')],
+        app: [path.join(dirSrc, 'index.js')],
     },
     output: {
         path: dirBuild,

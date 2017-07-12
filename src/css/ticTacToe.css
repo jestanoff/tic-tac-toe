@@ -11,6 +11,17 @@
 
 .board {
     background-color: bluePrimary;
+    position: relative;
+    left: 0;
+    /*-webkit-backface-visibility: hidden;
+    backface-visibility: hidden;*/
+    -webkit-transition: -webkit-transform .5s;
+    transition: transform .5s;
+}
+
+.flip {
+    -webkit-transform: rotateY(-180deg);
+    transform: rotateY(-180deg);
 }
 
 .innerContainer {
@@ -18,4 +29,14 @@
     margin: 0 auto;
     padding: 16px 0;
     position: relative;
+}
+:global {
+    .example-appear {
+      top: -500px;
+    }
+
+    .example-appear.example-appear-active {
+      top: 0px;
+      transition: top .3s ease-out;
+    }
 }
