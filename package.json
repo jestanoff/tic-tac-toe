@@ -37,7 +37,7 @@
     "deep-freeze": "0.0.1",
     "dirty-chai": "^1.2.2",
     "enzyme": "^2.8.0",
-    "eslint": "^3.18.0",
+    "eslint": "^4.18.2",
     "eslint-config-airbnb": "^14.1.0",
     "eslint-friendly-formatter": "^2.0.7",
     "eslint-loader": "^1.7.0",
