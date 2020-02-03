@@ -1,4 +1,5 @@
 # Tic Tac Toe
+## nice game writen in react as a side project
 - two difficulties of AI using Minimax algorithm
 - based on Google material design
 
