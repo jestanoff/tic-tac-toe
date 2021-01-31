@@ -64,7 +64,6 @@ module.exports = {
                         mimetype: 'application/font-woff',
                     },
                 }],
-                // loader: 'url-loader?&limit=10000&mimetype=application/font-woff',
             },
             {
                 test: /\.woff2(\?.*)?$/,
@@ -76,7 +75,6 @@ module.exports = {
                         mimetype: 'application/font-woff2',
                     },
                 }],
-                // loader: 'url-loader?name=/fonts/[name].[ext]&limit=10000&mimetype=application/font-woff2',
             },
             {
                 test: /\.ttf(\?.*)?$/,
@@ -88,7 +86,6 @@ module.exports = {
                         mimetype: 'application/octet-stream',
                     },
                 }],
-                // loader: 'url-loader?name=/fonts/[name].[ext]&limit=10000&mimetype=application/octet-stream',
             },
             {
                 test: /\.eot(\?.*)?$/,
@@ -100,7 +97,6 @@ module.exports = {
                         mimetype: 'application/font-otf',
                     },
                 }],
-                // loader: 'url-loader?name=/fonts/[name].[ext]&limit=10000&mimetype=application/font-otf',
             },
             {
                 test: /\.svg([?#].*)?$/,
@@ -112,7 +108,6 @@ module.exports = {
                         mimetype: 'image/svg+xml',
                     },
                 }],
-                // loader: 'url-loader?name=/fonts/[name].[ext]&limit=10000&mimetype=image/svg+xml',
             },
         ],
     },
