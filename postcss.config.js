@@ -1,7 +1,6 @@
 module.exports = {
-    map: true,
-    plugins: {
-        precss: {},
-        autoprefixer: {},
-    },
+    plugins: [
+        require('precss'),
+        require('autoprefixer'),
+    ],
 };

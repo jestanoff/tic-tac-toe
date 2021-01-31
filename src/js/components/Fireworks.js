@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { canvas } from '../../css/fireworks.css';
+import styles from '../../css/fireworks.css';
 import { startFireworks } from '../helpers';
 
 class Fireworks extends Component {
@@ -14,7 +14,7 @@ class Fireworks extends Component {
     }
 
     render() {
-        return <canvas id='canvas' className={ canvas } onClick={ this.props.handleClick } />;
+        return <canvas id='canvas' className={styles.canvas} onClick={ this.props.handleClick } />;
     }
 }
 
