@@ -1,45 +1,21 @@
 module.exports = {
-  "parser": "babel-eslint",
-  "rules": {
-    "strict": 0
+  parser: '@typescript-eslint/parser',
+  parserOptions: {
+    ecmaVersion: 2020,
+    ecmaFeatures: {
+      jsx: true,
+    },
+    sourceType: 'module',
   },
-  "env": {
-    "browser": true,
-    "es6": true,
-    "jquery": true,
-    "mocha": true
+  settings: {
+    react: {
+      version: 'detected',
+    },
   },
-  "globals": {
-    "shallow": true,
-    "mount": true,
-    "sinon": true,
-    "expect": true,
-    "React": true,
-  },
-  "extends": "airbnb",
-  "parserOptions": {
-    "sourceType": "module"
-  },
-  "plugins": [
-    "react"
+  extends: [
+    'plugin:react/recommended',
+    'plugin:@typescript-eslint/recommended',
+    'prettier/@typescript-eslint',
+    'plugin:prettier/recommended',
   ],
-  "rules": {
-    "max-len": ["error", 100, 4, {"ignoreComments": true} ],
-    "indent": ["error", 4],
-    "linebreak-style": ["warn", "unix"],
-    "quotes": ["error", "single"],
-    "semi": ["error", "always"],
-    "no-nested-ternary": ["off"],
-    "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
-    "react/jsx-indent": ["warn", 4],
-    "react/jsx-curly-spacing": ["error", "always"],
-    "jsx-a11y/no-static-element-interactions" : ["off"],
-    "react/no-array-index-key": ["off"],
-    'jsx-quotes': ["error", "prefer-single"],
-    /* Advanced Rules*/
-    "no-unused-expressions": "warn",
-    "no-useless-concat": "warn",
-    "block-scoped-var": "error",
-    "consistent-return": "error"
-  }
 };

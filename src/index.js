@@ -8,11 +8,6 @@ import TicTacToeApp from './js/TicTacToeApp';
 injectTapEventPlugin();
 
 const container = document.getElementById('app-container');
-const App = () => (
-    <TicTacToeApp />
-);
+const App = () => <TicTacToeApp />;
 
-render(
-    <App />,
-    container,
-);
+render(<App />, container);
