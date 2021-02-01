@@ -1,11 +1,11 @@
-import React, { Component } from 'react';
-import CSSTransitionGroup from 'react-transition-group/CSSTransitionGroup';
+import React, { memo, useCallback, useEffect, useMemo, useRef, useState } from 'react';
+import { CSSTransition, TransitionGroup } from 'react-transition-group';
 import Button from './components/Button';
-import Board from './containers/Board';
+import Board from './components/Board';
 import Header from './components/Header';
 import NotificationBar from './components/NotificationBar';
 import WinningLine from './components/WinningLine';
-import ScoresSection from './containers/ScoresSection';
+import ScoresSection from './components/ScoresSection';
 import Select from './components/Select';
 import Fireworks from './components/Fireworks';
 import styles from '../css/ticTacToe.css';
@@ -23,123 +23,122 @@ import {
   RESET,
   DARK_GRAY,
   WHITE,
-} from './constants/constants';
+} from './constants';
 import '../css/font.css';
 
 const initialState = {
-  boardStatus: new Array(NUM_OF_CELLS).fill(0),
+  boardStatus: Array(NUM_OF_CELLS).fill(0),
   difficulty: EASY,
+  history: [{ board: Array(NUM_OF_CELLS).fill(0) }],
   isBoardUiDisabled: false,
   notification: 'Start game by clicking on any cell',
   outcome: { winner: UNRESOLVED, line: UNRESOLVED },
   playerTurn: PLAYER_X,
-  history: [{ board: new Array(NUM_OF_CELLS).fill(0) }],
 };
+const options = [EASY, HARD];
 
-class TicTacToeApp extends Component {
-  constructor(props) {
-    super(props);
-    this.state = Object.assign({}, initialState);
-    this.timerAI = 0;
-  }
+const TicTacToeApp = () => {
+  const [
+    { boardStatus, difficulty, isBoardUiDisabled, notification, outcome, playerTurn, timeoutID },
+    setState,
+  ] = useState(initialState);
+  const board = useRef(null);
 
-  componentDidUpdate() {
-    const { boardStatus, difficulty, outcome, playerTurn, history } = this.state;
+  useEffect(() => {
     if (outcome.winner === UNRESOLVED && playerTurn === PLAYER_O) {
-      this.timerAI = setTimeout(() => {
+      const id = setTimeout(() => {
         const AIBoardStatus = computeAIMove(boardStatus, difficulty);
         const AIOutcome = isGameOver(AIBoardStatus);
-        this.setState({
+
+        setState((prevState) => ({
+          ...prevState,
           boardStatus: AIBoardStatus,
           isBoardUiDisabled: false,
           notification: getNotification(AIOutcome.winner),
           playerTurn: PLAYER_X,
           outcome: AIOutcome,
           history: [...history, { board: AIBoardStatus }],
-        });
+        }));
       }, AI_WAITING_TIME);
+
+      setState((prevState) => ({ ...prevState, timeoutID: id }));
     }
-  }
+  }, [boardStatus, difficulty, outcome, playerTurn]);
 
-  resetGame = () => {
-    const cx = this.board.classList;
-    cx.contains(styles.flip) ? cx.remove(styles.flip) : cx.add(styles.flip); // eslint-disable-line no-unused-expressions
-    clearTimeout(this.timerAI);
-    setTimeout(() => {
-      this.setState(Object.assign({}, initialState, { difficulty: this.state.difficulty }));
-    }, 200);
-  };
-
-  handleCellClick = (cellIndex) => {
-    const { boardStatus, isBoardUiDisabled, outcome, history } = this.state;
-    if (boardStatus[cellIndex] === 0 && !isBoardUiDisabled) {
-      const nextBoardStatus = boardStatus.slice();
-      nextBoardStatus[cellIndex] = PLAYER_X;
-      const nextOutcome = isGameOver(nextBoardStatus);
-      this.setState({
-        boardStatus: nextBoardStatus,
-        isBoardUiDisabled: true,
-        notification: getNotification(nextOutcome.winner),
-        playerTurn: PLAYER_O,
-        outcome: nextOutcome,
-        history: [...history, { board: nextBoardStatus }],
-      });
+  const resetGame = useCallback(() => {
+    if (board.current) {
+      const cx = board.current.classList;
+      cx.contains(styles.flip) ? cx.remove(styles.flip) : cx.add(styles.flip);
+      clearTimeout(timeoutID);
+      setState((prevState) => ({ ...initialState, difficulty: prevState.difficulty }));
     }
-    if (outcome.winner === DRAW) this.resetGame();
-  };
+  }, [timeoutID]);
 
-  handleDifficultyChange = (event) => {
-    this.setState(
-      {
+  const handleCellClick = useCallback(
+    (cellIndex) => {
+      if (boardStatus[cellIndex] === 0 && !isBoardUiDisabled) {
+        const nextBoardStatus = boardStatus.slice();
+        nextBoardStatus[cellIndex] = PLAYER_X;
+        const nextOutcome = isGameOver(nextBoardStatus);
+        setState((prevState) => ({
+          ...prevState,
+          boardStatus: nextBoardStatus,
+          isBoardUiDisabled: true,
+          notification: getNotification(nextOutcome.winner),
+          playerTurn: PLAYER_O,
+          outcome: nextOutcome,
+          history: [...history, { board: nextBoardStatus }],
+        }));
+      }
+
+      if (outcome.winner === DRAW) resetGame();
+    },
+    [boardStatus, isBoardUiDisabled, outcome, resetGame],
+  );
+
+  const handleDifficultyChange = useCallback(
+    (event) => {
+      console.log('event.target.value', event.target.value);
+      setState((prevState) => ({
+        ...prevState,
         difficulty: event.target.value,
-        outcome: { winner: UNRESOLVED, line: UNRESOLVED },
-      },
-      () => this.resetGame(),
-    );
-  };
+      }));
+      resetGame();
+    },
+    [resetGame],
+  );
 
-  render() {
-    const { boardStatus, difficulty, outcome, playerTurn } = this.state;
-    const showIcon = boardStatus.some(Boolean) && outcome.winner !== 0;
-    const icon = SYMBOLS[outcome.winner] || SYMBOLS[playerTurn];
-    const showWinningLine = outcome.line > UNRESOLVED;
+  const showIcon = boardStatus.some(Boolean) && outcome.winner !== 0;
+  const icon = SYMBOLS[outcome.winner] || SYMBOLS[playerTurn];
+  const showWinningLine = outcome.line > UNRESOLVED;
+  const timeout = useMemo(() => ({ enter: 300, exit: 1 }), []);
 
-    return (
-      <CSSTransitionGroup
-        transitionName="example"
-        transitionAppear={false}
-        transitionAppearTimeout={300}
-        transitionEnter={false}
-        transitionLeave={false}
-      >
+  return (
+    <TransitionGroup>
+      <CSSTransition classNames="example" timeout={timeout}>
         <div className={styles.container} id="main-container">
-          {outcome.winner === PLAYER_X && <Fireworks handleClick={this.resetGame} />}
-          <Select current={difficulty} options={[EASY, HARD]} onChange={this.handleDifficultyChange} />
+          {outcome.winner === PLAYER_X && <Fireworks handleClick={resetGame} />}
+          <Select current={difficulty} options={options} onChange={handleDifficultyChange} />
           <Header title="Tic Tac Toe" />
           <ScoresSection outcome={outcome.winner} playerTurn={playerTurn} />
-          <NotificationBar icon={icon} msg={this.state.notification} showIcon={showIcon} />
-          <section
-            className={styles.board}
-            ref={(board) => {
-              this.board = board;
-            }}
-          >
+          <NotificationBar icon={icon} msg={notification} showIcon={showIcon} />
+          <section className={styles.board} ref={board}>
             <div className={styles.innerContainer}>
               {showWinningLine && (
                 <WinningLine
                   line={outcome.line}
-                  handleClick={this.resetGame}
+                  handleClick={resetGame}
                   color={outcome.winner === PLAYER_X ? DARK_GRAY : WHITE}
                 />
               )}
-              <Board boardStatus={boardStatus} handleCellClick={this.handleCellClick} />
+              <Board boardStatus={boardStatus} handleCellClick={handleCellClick} />
             </div>
           </section>
-          <Button text={RESET} handleClick={this.resetGame} />
+          <Button text={RESET} handleClick={resetGame} />
         </div>
-      </CSSTransitionGroup>
-    );
-  }
-}
+      </CSSTransition>
+    </TransitionGroup>
+  );
+};
 
-export default TicTacToeApp;
+export default memo(TicTacToeApp);

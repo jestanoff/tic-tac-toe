@@ -1,5 +1,5 @@
 import isGameOver from './isGameOver';
-import { DRAW, PLAYER_X, PLAYER_O } from '../constants/constants';
+import { DRAW, PLAYER_X, PLAYER_O } from '../constants';
 
 export default class MiniMax {
   constructor() {

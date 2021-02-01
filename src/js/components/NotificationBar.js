@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { memo } from 'react';
 import PropTypes from 'prop-types';
 import styles from '../../css/notificationBar.css';
 import Mark from './Mark';
@@ -25,4 +25,4 @@ NotificationBar.defaultProps = {
   showIcon: false,
 };
 
-export default NotificationBar;
+export default memo(NotificationBar);

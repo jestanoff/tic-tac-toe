@@ -1,8 +1,8 @@
-import React from 'react';
+import React, { memo } from 'react';
 import PropTypes from 'prop-types';
-import Cell from '../components/Cell';
+import Cell from './Cell';
 import styles from '../../css/board.css';
-import { CSS_CLASSES, NUM_OF_CELLS } from '../constants/constants';
+import { CSS_CLASSES, NUM_OF_CELLS } from '../constants/index';
 
 const Board = ({ boardStatus, handleCellClick }) => (
   <section className={styles.container}>
@@ -23,4 +23,4 @@ Board.propTypes = {
   handleCellClick: PropTypes.func.isRequired,
 };
 
-export default Board;
+export default memo(Board);

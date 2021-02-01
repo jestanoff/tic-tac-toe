@@ -30,12 +30,13 @@
     padding: 16px 0;
     position: relative;
 }
+
 :global {
-    .example-appear {
+    .example-enter {
       top: -500px;
     }
 
-    .example-appear.example-appear-active {
+    .example-enter.example-enter-active {
       top: 0px;
       transition: top .3s ease-out;
     }

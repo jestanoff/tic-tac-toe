@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { memo } from 'react';
 import PropTypes from 'prop-types';
 import styles from '../../css/header.css';
 
@@ -8,4 +8,4 @@ Header.propTypes = {
   title: PropTypes.string.isRequired,
 };
 
-export default Header;
+export default memo(Header);

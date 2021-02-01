@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { memo } from 'react';
 import PropTypes from 'prop-types';
 import styles from '../../css/button.css';
 
@@ -15,4 +15,4 @@ Button.propTypes = {
   text: PropTypes.string.isRequired,
 };
 
-export default Button;
+export default memo(Button);

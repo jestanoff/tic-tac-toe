@@ -1,15 +1,18 @@
-import React from 'react';
+import React, { memo, useCallback } from 'react';
 import PropTypes from 'prop-types';
 import Mark from './Mark';
 import styles from '../../css/cell.css';
-import { PLAYER_X } from '../constants/constants';
+import { PLAYER_X } from '../constants';
 
 const Cell = ({ id, cssClasses, handleCellClick, status }) => {
   const generateStyles = () =>
     cssClasses.length ? cssClasses.map((val) => `${styles[val]} ${styles.cell}`).join(' ') : styles.cell;
+  const handleClick = useCallback(() => {
+    handleCellClick(id);
+  }, [handleCellClick, id]);
 
   return (
-    <article className={generateStyles()} onClick={() => handleCellClick(id)}>
+    <article className={generateStyles()} onClick={handleClick}>
       {status ? status === PLAYER_X ? <Mark type="cross" isAnimated /> : <Mark type="circle" isAnimated /> : ''}
     </article>
   );
@@ -26,4 +29,4 @@ Cell.defaultProps = {
   status: 0,
 };
 
-export default Cell;
+export default memo(Cell);

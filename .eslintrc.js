@@ -12,9 +12,12 @@ module.exports = {
       version: 'detected',
     },
   },
+  plugins: ['react-hooks', 'react-perf'],
   extends: [
     'plugin:react/recommended',
     'plugin:@typescript-eslint/recommended',
+    'plugin:react-perf/recommended',
+    'plugin:react-hooks/recommended',
     'prettier/@typescript-eslint',
     'plugin:prettier/recommended',
   ],
