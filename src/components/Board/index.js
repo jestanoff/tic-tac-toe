@@ -1,8 +1,8 @@
 import React, { memo } from 'react';
 import PropTypes from 'prop-types';
-import Cell from '../Cell';
+import Cell from 'components/Cell';
 import styles from './Board.css';
-import { CSS_CLASSES, NUM_OF_CELLS } from '../../constants';
+import { CSS_CLASSES, NUM_OF_CELLS } from 'constants';
 
 const Board = ({ boardStatus, handleCellClick }) => (
   <section className={styles.container}>

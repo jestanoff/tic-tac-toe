@@ -20,6 +20,7 @@ module.exports = {
   },
   resolve: {
     extensions: ['.ts', '.js'],
+    modules: ['src', 'node_modules'],
   },
   module: {
     rules: [

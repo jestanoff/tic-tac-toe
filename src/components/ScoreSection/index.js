@@ -1,7 +1,7 @@
 import React, { memo, useCallback, useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
-import Score from '../Score';
-import { SYMBOLS, PLAYER_X, PLAYER_O, M_DASH } from '../../constants';
+import Score from 'components/Score';
+import { SYMBOLS, PLAYER_X, PLAYER_O, M_DASH } from 'constants';
 import styles from './ScoresSection.css';
 
 const ScoresSection = ({ playerTurn, outcome }) => {

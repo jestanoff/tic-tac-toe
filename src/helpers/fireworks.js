@@ -1,5 +1,5 @@
 /* eslint-disable */
-import Stats from '../vendors/stats';
+import Stats from 'vendors/stats';
 
 export default function () {
   (function (window) {

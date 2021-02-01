@@ -1,7 +1,7 @@
 {
   "name": "tic-tac-toe",
-  "version": "1.0.0",
-  "description": "A simple game",
+  "version": "1.0.1",
+  "description": "tic-tac-toe game",
   "main": "src/index.js",
   "scripts": {
     "build": "webpack --mode production",
@@ -19,6 +19,9 @@
   "author": "Stefan Dzhestanov",
   "license": "ISC",
   "homepage": "https://github.com/jestanoff/tic-tac-toe#readme",
+  "engines": {
+    "node": ">=15.0.0"
+  },
   "devDependencies": {
     "@typescript-eslint/eslint-plugin": "^4.14.1",
     "@typescript-eslint/parser": "^4.14.1",

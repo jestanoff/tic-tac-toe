@@ -1,5 +1,5 @@
-import { HARD, EASY } from '../constants';
-import MiniMax from './miniMax';
+import { HARD, EASY } from 'constants';
+import MiniMax from 'helpers/miniMax';
 
 export function getAvailableMoves(boardStatus) {
   return boardStatus

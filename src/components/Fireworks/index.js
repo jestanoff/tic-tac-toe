@@ -1,6 +1,6 @@
 import React, { memo, useEffect } from 'react';
 import PropTypes from 'prop-types';
-import { startFireworks } from '../../helpers';
+import { startFireworks } from 'helpers';
 import styles from './Fireworks.css';
 
 const Fireworks = ({ handleClick }) => {

@@ -1,7 +1,7 @@
 import React, { memo, useCallback } from 'react';
 import PropTypes from 'prop-types';
-import Mark from '../Mark';
-import { PLAYER_X } from '../../constants';
+import Mark from 'components/Mark';
+import { PLAYER_X } from 'constants';
 import styles from './Cell.css';
 
 const Cell = ({ id, cssClasses, handleCellClick, status }) => {

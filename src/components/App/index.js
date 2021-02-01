@@ -1,14 +1,14 @@
 import React, { memo, useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
-import Button from '../Button';
-import Board from '../Board';
-import Header from '../Header';
-import NotificationBar from '../NotificationBar';
-import WinningLine from '../WinningLine';
-import ScoresSection from '../ScoreSection';
-import Select from '../Select';
-import Fireworks from '../Fireworks';
-import { isGameOver, computeAIMove, getNotification } from '../../helpers';
+import Button from 'components/Button';
+import Board from 'components/Board';
+import Header from 'components/Header';
+import NotificationBar from 'components/NotificationBar';
+import WinningLine from 'components/WinningLine';
+import ScoresSection from 'components/ScoreSection';
+import Select from 'components/Select';
+import Fireworks from 'components/Fireworks';
+import { isGameOver, computeAIMove, getNotification } from 'helpers';
 import {
   AI_WAITING_TIME,
   DRAW,
@@ -22,9 +22,9 @@ import {
   RESET,
   DARK_GRAY,
   WHITE,
-} from '../../constants';
+} from 'constants';
+import 'css/font.css';
 import styles from './App.css';
-import '../../css/font.css';
 
 const initialState = {
   boardStatus: Array(NUM_OF_CELLS).fill(0),
