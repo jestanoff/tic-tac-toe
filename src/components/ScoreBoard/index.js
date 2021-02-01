@@ -4,7 +4,7 @@ import Score from 'components/Score';
 import { SYMBOLS, PLAYER_X, PLAYER_O, M_DASH } from 'constants';
 import styles from './ScoresSection.css';
 
-const ScoresSection = ({ playerTurn, outcome }) => {
+const ScoreBoard = ({ playerTurn, outcome }) => {
   const [state, setState] = useState({
     [PLAYER_X]: +localStorage.playerX || M_DASH,
     [PLAYER_O]: +localStorage.playerO || M_DASH,
@@ -38,13 +38,13 @@ const ScoresSection = ({ playerTurn, outcome }) => {
   );
 };
 
-ScoresSection.propTypes = {
+ScoreBoard.propTypes = {
   outcome: PropTypes.number,
   playerTurn: PropTypes.number.isRequired,
 };
 
-ScoresSection.defaultProps = {
+ScoreBoard.defaultProps = {
   outcome: -1,
 };
 
-export default memo(ScoresSection);
+export default memo(ScoreBoard);

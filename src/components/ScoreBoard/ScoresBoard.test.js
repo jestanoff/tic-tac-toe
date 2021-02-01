@@ -1,4 +1,4 @@
-import React from 'react';
+import React from './react';
 import ScoresSection from '../../src/js/containers/ScoresSection';
 import { DRAW, PLAYER_X, PLAYER_O, M_DASH } from '../../src/js/constants/constants';
 

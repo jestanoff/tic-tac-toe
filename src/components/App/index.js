@@ -5,7 +5,7 @@ import Board from 'components/Board';
 import Header from 'components/Header';
 import NotificationBar from 'components/NotificationBar';
 import WinningLine from 'components/WinningLine';
-import ScoresSection from 'components/ScoreSection';
+import ScoreBoard from 'components/ScoreBoard';
 import Select from 'components/Select';
 import Fireworks from 'components/Fireworks';
 import { isGameOver, computeAIMove, getNotification } from 'helpers';
@@ -120,7 +120,7 @@ const TicTacToeApp = () => {
           {outcome.winner === PLAYER_X && <Fireworks handleClick={resetGame} />}
           <Select current={difficulty} options={options} onChange={handleDifficultyChange} />
           <Header title="Tic Tac Toe" />
-          <ScoresSection outcome={outcome.winner} playerTurn={playerTurn} />
+          <ScoreBoard outcome={outcome.winner} playerTurn={playerTurn} />
           <NotificationBar icon={icon} msg={notification} showIcon={showIcon} />
           <section className={styles.board} ref={board}>
             <div className={styles.innerContainer}>
