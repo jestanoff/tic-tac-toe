@@ -1,7 +1,7 @@
 import React, { memo, useEffect } from 'react';
 import PropTypes from 'prop-types';
-import styles from '../../css/fireworks.css';
-import { startFireworks } from '../helpers';
+import { startFireworks } from '../../helpers';
+import styles from './Fireworks.css';
 
 const Fireworks = ({ handleClick }) => {
   useEffect(() => {

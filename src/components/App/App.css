@@ -1,4 +1,4 @@
-@value bluePrimary, greySecondary from "./colors.css";
+@value bluePrimary, greySecondary from "../../css/colors.css";
 
 .container {
     background: greySecondary;

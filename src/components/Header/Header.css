@@ -1,5 +1,5 @@
-@value fontPrimary from "./font.css";
-@value greyQuaternary from "./colors.css";
+@value fontPrimary from "../../css/font.css";
+@value greyQuaternary from "../../css/colors.css";
 
 .header {
     font-family: fontPrimary;

@@ -1,7 +1,7 @@
 import React, { memo } from 'react';
 import PropTypes from 'prop-types';
-import styles from '../../css/mark.css';
-import { DARK_GRAY, WHITE } from '../constants';
+import { DARK_GRAY, WHITE } from '../../constants';
+import styles from './Mark.css';
 
 const Mark = ({ isAnimated, overrideColor, type }) => (
   <div className={styles.container}>

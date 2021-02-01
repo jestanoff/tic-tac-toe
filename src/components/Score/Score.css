@@ -1,5 +1,5 @@
-@value bluePrimary, greyPrimary, greyTertiary from "./colors.css";
-@value fontPrimary from "./font.css";
+@value bluePrimary, greyPrimary, greyTertiary from "../../css/colors.css";
+@value fontPrimary from "../../css/font.css";
 
 .mark {
     width: 28px;

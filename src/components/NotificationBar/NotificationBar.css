@@ -1,5 +1,5 @@
-@value greyPrimary from "./colors.css";
-@value fontPrimary from "./font.css";
+@value greyPrimary from "../../css/colors.css";
+@value fontPrimary from "../../css/font.css";
 
 .container {
     color: greyPrimary;

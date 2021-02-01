@@ -1,8 +1,8 @@
 import React, { memo } from 'react';
 import { bool, number, oneOfType, string } from 'prop-types';
-import Mark from './Mark';
-import styles from '../../css/score.css';
-import { DARK_GRAY } from '../constants';
+import Mark from '../Mark';
+import { DARK_GRAY } from '../../constants';
+import styles from './Score.css';
 
 const Score = ({ isActive, score, symbol }) => (
   <div className={isActive ? styles.active : styles.container}>

@@ -1,7 +1,7 @@
 import React, { memo } from 'react';
 import PropTypes from 'prop-types';
-import styles from '../../css/notificationBar.css';
-import Mark from './Mark';
+import Mark from '../Mark';
+import styles from './NotificationBar.css';
 
 const NotificationBar = ({ icon, msg, showIcon }) => (
   <div className={styles.container}>

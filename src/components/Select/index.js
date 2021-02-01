@@ -1,6 +1,6 @@
 import React, { memo } from 'react';
 import PropTypes from 'prop-types';
-import styles from '../../css/select.css';
+import styles from './Select.css';
 
 const Select = ({ current, onChange, options }) => (
   <section className={styles.container}>

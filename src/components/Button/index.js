@@ -1,6 +1,6 @@
 import React, { memo } from 'react';
 import PropTypes from 'prop-types';
-import styles from '../../css/button.css';
+import styles from './Button.css';
 
 const Button = ({ text, handleClick }) => (
   <div className={styles.container}>

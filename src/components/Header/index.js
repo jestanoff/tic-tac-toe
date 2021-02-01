@@ -1,6 +1,6 @@
 import React, { memo } from 'react';
 import PropTypes from 'prop-types';
-import styles from '../../css/header.css';
+import styles from './Header.css';
 
 const Header = ({ title }) => <h1 className={styles.header}>{title}</h1>;
 

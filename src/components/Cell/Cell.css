@@ -1,4 +1,4 @@
-@value blueSecondary, greyPrimary from "./colors.css";
+@value blueSecondary, greyPrimary from "../../css/colors.css";
 
 .cell {
     box-sizing: border-box;

@@ -1,4 +1,5 @@
-@value fontPrimary from './font.css';
+@value fontPrimary from '../../css/font.css';
+
 .select {
     display: inline-block;
     font-family: fontPrimary;

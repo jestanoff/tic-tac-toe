@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import styles from '../../css/winningLine.css';
-import { COORDS } from '../constants';
+import { COORDS } from '../../constants';
+import styles from './WinningLine.css';
 
 const WinningLine = ({ color, line, handleClick }) => {
   const drawLine = (x1, y1, x2, y2) => (
