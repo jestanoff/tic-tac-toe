@@ -9,14 +9,14 @@ Live app [jestanoff.github.io/tic-tac-toe/](https://jestanoff.github.io/tic-tac-
 ### To run localy clone this repo
 `git clone git@github.com:jestanoff/tic-tac-toe.git`
 
-### Install all node packages
-`npm install`
+### Install dependancies
+`yarn`
 
 ### Run the dev server
-`npm start`
+`yarn start`
 
 ### Run build
-`npm run build`
+`yarn build`
 
 ### Run test suite
-`npm run test`
+`yarn test`
