@@ -137,22 +137,12 @@ module.exports = {
   devtool: 'source-map',
   context: __dirname,
   target: 'web',
-  stats: {
-    children: false,
-    chunkModules: false,
-    chunks: false,
-    colors: true,
-    hash: true,
-    timings: true,
-    version: false,
-  },
   devServer: {
     contentBase: path.join(__dirname, 'src'),
     compress: true,
     historyApiFallback: true,
     hot: true,
     https: false,
-    public: '0.0.0.0',
     port: 3000,
     disableHostCheck: true,
     stats: {
@@ -162,7 +152,7 @@ module.exports = {
       colors: true,
       hash: true,
       timings: true,
-      version: false,
+      version: true,
     },
   },
 };
