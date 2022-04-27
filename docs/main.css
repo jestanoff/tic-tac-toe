@@ -12,7 +12,7 @@
 
 
 
-.button__button___12M8Q {
+.Button__button___q3fmL {
     background: none;
     border: none;
     color: #1485bd;
@@ -23,16 +23,16 @@
     width: 100%;
 }
 
-.button__button___12M8Q:focus {
+.Button__button___q3fmL:focus {
     outline:none;
 }
 
-.button__container___2zi4l {
+.Button__container___1yshE {
     padding: 10px 0;
     text-align: center;
 }
 
-.mark__container___3PKH4 {
+.Mark__container___1Uu8W {
     display: inline-block;
     overflow: hidden;
     padding-bottom: 100%;
@@ -41,14 +41,14 @@
     text-align: center;
 }
 
-.mark__svg___1TOYg {
+.Mark__svg___3WO0J {
     display: inline-block;
     left: 0;
     position: absolute;
     top: 0;
 }
 
-.cell__cell___3d1ej {
+.Cell__cell___3nImo {
     box-sizing: border-box;
     border: 3px solid #336a86;
     float: left;
@@ -63,41 +63,41 @@
     -webkit-tap-highlight-color: rgba(0,0,0,0);
 }
 
-.cell__left___3Y21q {
+.Cell__left___2ahyK {
     border-left-color: transparent;
 }
 
-.cell__right___1izx1 {
+.Cell__right___1OEjG {
     border-right-color: transparent;
 }
 
-.cell__top___1_cCZ {
+.Cell__top___jmzrj {
     border-top-color: transparent;
 }
 
-.cell__bottom___1VHdI {
+.Cell__bottom___2RAsj {
     border-bottom-color: transparent;
 }
 
-.cell__symbolWhite___3lPPi {
+.Cell__symbolWhite___6nKxk {
     color: white;
 }
 
-.cell__symbolBlack___3m-TV {
+.Cell__symbolBlack___2jKVE {
     color: #333;
 }
 
-.board__container___u6QjL {
+.Board__container___2NWts {
     box-sizing: border-box;
 }
 
-.board__container___u6QjL:after {
+.Board__container___2NWts:after {
   clear: both;
   content: "";
   display: table;
 }
 
-.header__header___2OI2q {
+.Header__header___3TXz2 {
     font-family: 'Roboto-Medium', Arial, sans-serif;
     margin: 0;
     color: #666;
@@ -106,7 +106,7 @@
     font-size: 26px;
 }
 
-.notificationBar__container___14DHo {
+.NotificationBar__container___1Su7D {
     color: #333;
     font-family: 'Roboto-Medium', Arial, sans-serif;
     font-size: 12px;
@@ -115,7 +115,7 @@
     text-align: center;
 }
 
-.notificationBar__icon___1wQJc {
+.NotificationBar__icon___3RNsk {
     display: inline-block;
     height: 16px;
     margin-right: 2px;
@@ -123,7 +123,7 @@
     width: 16px;
 }
 
-.winningLine__container___1xUyQ {
+.WinningLine__container___2AOCJ {
     height: 240px;
     left: 0;
     position: absolute;
@@ -132,13 +132,13 @@
     z-index: 1;
 }
 
-.score__mark___33YXD {
+.Score__mark___3vcIW {
     width: 28px;
     height: 28px;
     display: inline-block;
 }
 
-.score__container___3kQP3 {
+.Score__container___3Ow3T {
     background: white;
     display: inline-block;
     width: 48%;
@@ -149,12 +149,12 @@
     margin: 1%;
 }
 
-.score__active___3Mm1Z {
+.Score__active___37LdA {
     border-bottom-color: #1485bd;
     box-shadow: 0 0 6px #999;
 }
 
-.score__score___1Ni4o {
+.Score__score___1r1Ls {
     color: #333;
     font-size: 20px;
     font-family: 'Roboto-Medium', Arial, sans-serif;
@@ -162,34 +162,46 @@
     padding-top: 2px;
 }
 
-.scoresSection__container___ryGOE {
+.ScoresSection__container___3N-q3 {
     margin: 0 10% 12px;
 }
 
-.select__select___2hXe7 {
+.Select__select___3LXB9 {
     display: inline-block;
     font-family: 'Roboto-Medium', Arial, sans-serif;
     font-size: 12px;
     padding: 6px 20px;
 }
 
-.select__container___1RTfF {
+.Select__container___13vno {
     padding: 12px 12px 0;
     text-align: right;
 }
 
-.select__option___2ixq2 {
+.Select__option___1H1cI {
 
 }
 
-.fireworks__canvas___3FMEY {
+.Fireworks__canvas___x2aJs {
     position: absolute;
     z-index: 2;
     left: 0;
     top: 0;
 }
 
-.ticTacToe__container___2zDSV {
+@font-face {
+    font-family: 'Roboto-Medium';
+    src: url(/fonts/Roboto-Medium.eot);
+    src: url(/fonts/Roboto-Medium.woff2) format('woff2'),
+       url(/fonts/Roboto-Medium.woff) format('woff'),
+       url(/fonts/Roboto-Medium.ttf) format('truetype'),
+       url(/fonts/Roboto-Medium.svg#Roboto-Medium) format('svg'),
+       url(/fonts/Roboto-Medium.eot?#iefix) format('embedded-opentype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+.App__container___38UOf {
     background: #efefef;
     box-shadow: 0 0 2px rgba(0, 0, 0, .4);
     margin: 50px auto;
@@ -198,7 +210,7 @@
     position: relative;
 }
 
-.ticTacToe__board___10KVP {
+.App__board___2ZBOc {
     background-color: #1485bd;
     position: relative;
     left: 0;
@@ -207,11 +219,11 @@
     transition: transform .5s;
 }
 
-.ticTacToe__flip___f0dWE {
+.App__flip___13jbI {
     transform: rotateY(-180deg);
 }
 
-.ticTacToe__innerContainer___CIDM6 {
+.App__innerContainer___3M-LE {
     width: 240px;
     margin: 0 auto;
     padding: 16px 0;
