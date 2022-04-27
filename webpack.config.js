@@ -12,21 +12,20 @@ if (!fs.existsSync(dist)) {
 
 module.exports = {
   mode: 'development',
-  entry: './src/index.js',
+  entry: './src/index.tsx',
   output: {
     filename: 'bundle.js',
     path: dist,
     publicPath: '',
   },
   resolve: {
-    extensions: ['.ts', '.js'],
+    extensions: ['.ts', '.tsx', '.js', '.jsx'],
     modules: ['src', 'node_modules'],
   },
   module: {
     rules: [
       {
-        test: /\.(t|j)s$/,
-        include: [path.resolve(__dirname, 'src')],
+        test: /\.(t|j)sx?$/,
         exclude: [path.resolve(__dirname, 'node_modules')],
         loader: 'ts-loader',
       },
@@ -40,6 +39,12 @@ module.exports = {
         test: /\.css$/,
         use: [
           { loader: MiniCssExtractPlugin.loader },
+          {
+            loader: 'css-modules-typescript-loader',
+            options: {
+              mode: 'emit',
+            },
+          },
           {
             loader: 'css-loader',
             options: {
@@ -142,12 +147,13 @@ module.exports = {
     version: false,
   },
   devServer: {
-    contentBase: path.join(__dirname, 'src'), // boolean | string | array, static file location
-    compress: true, // enable gzip compression
-    historyApiFallback: true, // true for index.html upon 404, object for multiple paths
-    hot: true, // hot module replacement. Depends on HotModuleReplacementPlugin
-    https: false, // true for self-signed, object for cert authority
+    contentBase: path.join(__dirname, 'src'),
+    compress: true,
+    historyApiFallback: true,
+    hot: true,
+    https: false,
     public: '0.0.0.0',
+    port: 3000,
     disableHostCheck: true,
     stats: {
       children: false,
@@ -158,12 +164,5 @@ module.exports = {
       timings: true,
       version: false,
     },
-  },
-  // Ignore these as required by Enzyme http://airbnb.io/enzyme/docs/guides/webpack.html
-  externals: {
-    cheerio: 'window',
-    'react/addons': true,
-    'react/lib/ExecutionEnvironment': true,
-    'react/lib/ReactContext': true,
   },
 };

@@ -1,5 +1,5 @@
-import React, { memo } from 'react';
-import PropTypes from 'prop-types';
+import * as React from 'react';
+import * as PropTypes from 'prop-types';
 import styles from './Button.css';
 
 const Button = ({ text, handleClick }) => (
@@ -15,4 +15,4 @@ Button.propTypes = {
   text: PropTypes.string.isRequired,
 };
 
-export default memo(Button);
+export default React.memo(Button);

@@ -1,16 +1,17 @@
-import { HARD, EASY } from 'constants';
+import { HARD } from '../constants';
 import MiniMax from 'helpers/miniMax';
 
-export function getAvailableMoves(boardStatus) {
+function getAvailableMoves(boardStatus: number[]): number[] {
   return boardStatus
     .map((val, cell) => [val, cell])
     .filter((val) => !val[0])
     .map((val) => val[1]);
 }
 
-function getRandomMove(board) {
+function getRandomMove(board: number[]): number[] {
   const availableMoves = getAvailableMoves(board);
   const random = Math.floor(Math.random() * availableMoves.length);
+
   return board.map((val, i) => {
     if (i === availableMoves[random]) {
       return 2;
@@ -19,15 +20,11 @@ function getRandomMove(board) {
   });
 }
 
-function computeAIMove(board, difficulty) {
+export default function computeAIMove(board: number[], difficulty: string): number[] {
   if (difficulty === HARD) {
-    const obj = new MiniMax();
-    // console.time('AI move');
-    return obj.makeAIMove(board);
-    // console.timeEnd('AI move');
+    const minMax = new MiniMax();
+    return minMax.makeAIMove(board);
   }
-  if (difficulty === EASY) return getRandomMove(board);
-  return 0;
-}
 
-export default computeAIMove;
+  return getRandomMove(board);
+}

@@ -15,7 +15,18 @@ export const CSS_CLASSES = {
   8: ['bottom', 'right'],
 };
 
-export const COORDS = {
+interface Coords {
+  0: Array<number>;
+  1: Array<number>;
+  2: Array<number>;
+  3: Array<number>;
+  4: Array<number>;
+  5: Array<number>;
+  6: Array<number>;
+  7: Array<number>;
+}
+
+export const COORDS: Coords = {
   //  x1, y1, x2, y2
   0: [30, 82, 470, 82], // horizontal
   1: [30, 250, 470, 250],
@@ -39,6 +50,5 @@ export const M_DASH = '\u2014';
 export const EASY = 'Easy';
 export const HARD = 'Impossible';
 export const RESET = 'Reset';
-
 export const DARK_GRAY = '#444444';
 export const WHITE = '#FFFFFF';

@@ -1,13 +1,13 @@
-import React, { memo, useCallback } from 'react';
-import PropTypes from 'prop-types';
+import * as React from 'react';
+import * as PropTypes from 'prop-types';
 import Mark from 'components/Mark';
-import { PLAYER_X } from 'constants';
+import { PLAYER_X } from '../../constants';
 import styles from './Cell.css';
 
 const Cell = ({ id, cssClasses, handleCellClick, status }) => {
   const generateStyles = () =>
     cssClasses.length ? cssClasses.map((val) => `${styles[val]} ${styles.cell}`).join(' ') : styles.cell;
-  const handleClick = useCallback(() => {
+  const handleClick = React.useCallback(() => {
     handleCellClick(id);
   }, [handleCellClick, id]);
 
@@ -29,4 +29,4 @@ Cell.defaultProps = {
   status: 0,
 };
 
-export default memo(Cell);
+export default React.memo(Cell);

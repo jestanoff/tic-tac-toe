@@ -1,11 +1,16 @@
-function findWinner(arr) {
+interface Result {
+  line: number;
+  winner: number;
+}
+
+function findWinner(arr: number[]): number {
   const match = arr.join('').match(/(1|2)\1{2}/);
   return match ? Number(match[1]) : -1;
 }
 
-export default function isGameOver(board) {
-  const vertical = [[], [], []];
-  const diagonal = [[], []];
+export default function isGameOver(board: number[]): Result {
+  const vertical: number[][] = [[], [], []];
+  const diagonal: number[][] = [[], []];
   // transform board into horizontal lines
   const horizontal = [board.slice(0, 3), board.slice(3, 6), board.slice(6)];
 
@@ -29,5 +34,6 @@ export default function isGameOver(board) {
     }
   }
   const isDrawGame = board.every(Boolean);
+
   return isDrawGame ? { winner: 0, line: -1 } : { winner: -1, line: -1 };
 }

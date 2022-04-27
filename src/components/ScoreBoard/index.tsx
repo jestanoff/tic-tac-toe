@@ -1,16 +1,16 @@
-import React, { memo, useCallback, useEffect, useState } from 'react';
-import PropTypes from 'prop-types';
+import * as React from 'react';
+import * as PropTypes from 'prop-types';
 import Score from 'components/Score';
-import { SYMBOLS, PLAYER_X, PLAYER_O, M_DASH } from 'constants';
+import { SYMBOLS, PLAYER_X, PLAYER_O, M_DASH } from '../../constants';
 import styles from './ScoresSection.css';
 
 const ScoreBoard = ({ playerTurn, outcome }) => {
-  const [state, setState] = useState({
+  const [state, setState] = React.useState({
     [PLAYER_X]: +localStorage.playerX || M_DASH,
     [PLAYER_O]: +localStorage.playerO || M_DASH,
   });
 
-  useEffect(() => {
+  React.useEffect(() => {
     const incrementScore = (score) => (score === M_DASH ? 1 : +score + 1);
 
     if (outcome === PLAYER_X) {
@@ -22,7 +22,7 @@ const ScoreBoard = ({ playerTurn, outcome }) => {
     }
   }, [outcome]);
 
-  const isScoreActive = useCallback(
+  const isScoreActive = React.useCallback(
     (player) => {
       if (outcome === 0) return false;
       return outcome > 0 ? outcome === player : playerTurn === player;
@@ -47,4 +47,4 @@ ScoreBoard.defaultProps = {
   outcome: -1,
 };
 
-export default memo(ScoreBoard);
+export default React.memo(ScoreBoard);

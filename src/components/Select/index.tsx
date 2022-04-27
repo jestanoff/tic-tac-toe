@@ -1,5 +1,5 @@
-import React, { memo } from 'react';
-import PropTypes from 'prop-types';
+import * as React from 'react';
+import * as PropTypes from 'prop-types';
 import styles from './Select.css';
 
 const Select = ({ current, onChange, options }) => (
@@ -20,4 +20,4 @@ Select.propTypes = {
   options: PropTypes.arrayOf(PropTypes.string).isRequired,
 };
 
-export default memo(Select);
+export default React.memo(Select);

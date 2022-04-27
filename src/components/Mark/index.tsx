@@ -1,6 +1,6 @@
-import React, { memo } from 'react';
-import PropTypes from 'prop-types';
-import { DARK_GRAY, WHITE } from 'constants';
+import * as React from 'react';
+import * as PropTypes from 'prop-types';
+import { DARK_GRAY, WHITE } from '../../constants';
 import styles from './Mark.css';
 
 const Mark = ({ isAnimated, overrideColor, type }) => {
@@ -102,4 +102,4 @@ Mark.defaultProps = {
   overrideColor: undefined,
 };
 
-export default memo(Mark);
+export default React.memo(Mark);

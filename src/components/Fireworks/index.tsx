@@ -1,10 +1,10 @@
-import React, { memo, useEffect } from 'react';
-import PropTypes from 'prop-types';
+import * as React from 'react';
+import * as PropTypes from 'prop-types';
 import { startFireworks } from 'helpers';
 import styles from './Fireworks.css';
 
 const Fireworks = ({ handleClick }) => {
-  useEffect(() => {
+  React.useEffect(() => {
     startFireworks();
     const id = setTimeout(handleClick, 30000);
     return () => clearTimeout(id);
@@ -17,4 +17,4 @@ Fireworks.propTypes = {
   handleClick: PropTypes.func.isRequired,
 };
 
-export default memo(Fireworks);
+export default React.memo(Fireworks);

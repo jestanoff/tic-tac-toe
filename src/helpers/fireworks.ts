@@ -1,4 +1,8 @@
 /* eslint-disable */
+// @ts-nocheck
+/**
+  Third party javascript code
+*/
 import Stats from 'vendors/stats';
 
 export default function () {

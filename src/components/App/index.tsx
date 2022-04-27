@@ -1,4 +1,4 @@
-import React, { memo, useCallback, useEffect, useMemo, useRef, useState } from 'react';
+import * as React from 'react';
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
 import Button from 'components/Button';
 import Board from 'components/Board';
@@ -22,11 +22,31 @@ import {
   RESET,
   DARK_GRAY,
   WHITE,
-} from 'constants';
+} from '../../constants';
 import 'css/font.css';
 import styles from './App.css';
 
-const initialState = {
+interface Board {
+  board: Array<number>;
+}
+
+interface Outcome {
+  winner: number;
+  line: number;
+}
+
+interface State {
+  boardStatus: Array<number>;
+  difficulty: string;
+  history: Array<Board>;
+  isBoardUiDisabled: boolean;
+  notification: string;
+  outcome: Outcome;
+  playerTurn: number;
+  timeoutId?: ReturnType<typeof setTimeout>;
+}
+
+const initialState: State = {
   boardStatus: Array(NUM_OF_CELLS).fill(0),
   difficulty: EASY,
   history: [{ board: Array(NUM_OF_CELLS).fill(0) }],
@@ -39,42 +59,49 @@ const options = [EASY, HARD];
 
 const TicTacToeApp = () => {
   const [
-    { boardStatus, difficulty, isBoardUiDisabled, notification, outcome, playerTurn, timeoutID },
+    { boardStatus, difficulty, isBoardUiDisabled, notification, outcome, playerTurn, timeoutId },
     setState,
-  ] = useState(initialState);
-  const board = useRef(null);
+  ] = React.useState(initialState);
+  const board = React.useRef<HTMLElement>(null);
 
-  useEffect(() => {
+  React.useEffect(() => {
     if (outcome.winner === UNRESOLVED && playerTurn === PLAYER_O) {
       const id = setTimeout(() => {
         const AIBoardStatus = computeAIMove(boardStatus, difficulty);
         const AIOutcome = isGameOver(AIBoardStatus);
 
-        setState((prevState) => ({
-          ...prevState,
-          boardStatus: AIBoardStatus,
-          isBoardUiDisabled: false,
-          notification: getNotification(AIOutcome.winner),
-          playerTurn: PLAYER_X,
-          outcome: AIOutcome,
-          history: [...history, { board: AIBoardStatus }],
-        }));
+        setState(
+          (prevState: State): State => ({
+            ...prevState,
+            boardStatus: AIBoardStatus,
+            isBoardUiDisabled: false,
+            notification: getNotification(AIOutcome.winner),
+            playerTurn: PLAYER_X,
+            outcome: AIOutcome,
+            history: [...prevState.history, { board: AIBoardStatus }],
+          }),
+        );
       }, AI_WAITING_TIME);
 
-      setState((prevState) => ({ ...prevState, timeoutID: id }));
+      setState((prevState) => {
+        return { ...prevState, timeoutId: id };
+      });
     }
   }, [boardStatus, difficulty, outcome, playerTurn]);
 
-  const resetGame = useCallback(() => {
+  const resetGame = React.useCallback(() => {
     if (board.current) {
-      const cx = board.current.classList;
+      const cx = board.current?.classList ?? '';
       cx.contains(styles.flip) ? cx.remove(styles.flip) : cx.add(styles.flip);
-      clearTimeout(timeoutID);
       setState((prevState) => ({ ...initialState, difficulty: prevState.difficulty }));
     }
-  }, [timeoutID]);
 
-  const handleCellClick = useCallback(
+    if (timeoutId) {
+      clearTimeout(timeoutId);
+    }
+  }, [timeoutId]);
+
+  const handleCellClick = React.useCallback(
     (cellIndex) => {
       if (boardStatus[cellIndex] === 0 && !isBoardUiDisabled) {
         const nextBoardStatus = boardStatus.slice();
@@ -87,7 +114,7 @@ const TicTacToeApp = () => {
           notification: getNotification(nextOutcome.winner),
           playerTurn: PLAYER_O,
           outcome: nextOutcome,
-          history: [...history, { board: nextBoardStatus }],
+          history: [...prevState.history, { board: nextBoardStatus }],
         }));
       }
 
@@ -96,13 +123,13 @@ const TicTacToeApp = () => {
     [boardStatus, isBoardUiDisabled, outcome, resetGame],
   );
 
-  const handleDifficultyChange = useCallback(
+  const handleDifficultyChange = React.useCallback(
     (event) => {
-      console.log('event.target.value', event.target.value);
       setState((prevState) => ({
         ...prevState,
         difficulty: event.target.value,
       }));
+
       resetGame();
     },
     [resetGame],
@@ -111,7 +138,7 @@ const TicTacToeApp = () => {
   const showIcon = boardStatus.some(Boolean) && outcome.winner !== 0;
   const icon = SYMBOLS[outcome.winner] || SYMBOLS[playerTurn];
   const showWinningLine = outcome.line > UNRESOLVED;
-  const timeout = useMemo(() => ({ enter: 300, exit: 1 }), []);
+  const timeout = React.useMemo(() => ({ enter: 300, exit: 1 }), []);
 
   return (
     <TransitionGroup>
@@ -141,4 +168,4 @@ const TicTacToeApp = () => {
   );
 };
 
-export default memo(TicTacToeApp);
+export default React.memo(TicTacToeApp);
