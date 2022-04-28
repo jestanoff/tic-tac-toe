@@ -18,6 +18,7 @@ exports[`<Board /> should render proper markup 1`] = `
       >
         <svg
           class="svg"
+          data-testid="circle-mark"
           preserveAspectRatio="xMinYMin meet"
           version="1.1"
           viewBox="0 0 500 500"
@@ -54,6 +55,7 @@ exports[`<Board /> should render proper markup 1`] = `
       >
         <svg
           class="svg"
+          data-testid="cross-mark"
           preserveAspectRatio="xMinYMin meet"
           version="1.1"
           viewBox="0 0 500 500"
@@ -99,7 +101,7 @@ exports[`<Board /> should render proper markup 1`] = `
               attributeName="opacity"
               attributeType="XML"
               begin="125ms"
-              dur="1ms"
+              dur="125ms"
               fill="freeze"
               from="0"
               repeatCount="1"
@@ -150,6 +152,7 @@ exports[`<Board /> should render proper markup 1`] = `
       >
         <svg
           class="svg"
+          data-testid="cross-mark"
           preserveAspectRatio="xMinYMin meet"
           version="1.1"
           viewBox="0 0 500 500"
@@ -195,7 +198,7 @@ exports[`<Board /> should render proper markup 1`] = `
               attributeName="opacity"
               attributeType="XML"
               begin="125ms"
-              dur="1ms"
+              dur="125ms"
               fill="freeze"
               from="0"
               repeatCount="1"
@@ -238,6 +241,7 @@ exports[`<Board /> should render proper markup 1`] = `
       >
         <svg
           class="svg"
+          data-testid="circle-mark"
           preserveAspectRatio="xMinYMin meet"
           version="1.1"
           viewBox="0 0 500 500"
