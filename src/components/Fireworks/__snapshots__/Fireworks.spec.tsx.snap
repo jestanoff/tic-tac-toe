@@ -1,0 +1,17 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Fireworks /> should display third party fireworks animation when human player wins the game 1`] = `
+<DocumentFragment>
+  <div
+    id="main-container"
+  >
+    <canvas
+      class="canvas"
+      height="0"
+      id="canvas"
+      role="button"
+      width="0"
+    />
+  </div>
+</DocumentFragment>
+`;

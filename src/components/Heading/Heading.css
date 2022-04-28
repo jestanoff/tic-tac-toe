@@ -1,7 +1,7 @@
 @value fontPrimary from "css/font.css";
 @value greyQuaternary from "css/colors.css";
 
-.header {
+.heading {
   color: greyQuaternary;
   font-family: fontPrimary;
   font-size: 26px;

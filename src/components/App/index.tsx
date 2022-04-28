@@ -2,7 +2,7 @@ import * as React from 'react';
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
 import Button from 'components/Button';
 import Board from 'components/Board';
-import Header from 'components/Header';
+import Heading from 'components/Heading';
 import NotificationBar from 'components/NotificationBar';
 import WinningLine from 'components/WinningLine';
 import ScoreBoard from 'components/ScoreBoard';
@@ -148,7 +148,7 @@ const App = () => {
         <div className={styles.container} id="main-container">
           {outcome.winner === PLAYER_X && <Fireworks handleClick={resetGame} />}
           <Select current={difficulty} options={options} onChange={handleDifficultyChange} />
-          <Header title="Tic Tac Toe" />
+          <Heading title="Tic Tac Toe" />
           <ScoreBoard outcome={outcome.winner} playerTurn={playerTurn} />
           <NotificationBar icon={icon} message={notification} showIcon={showIcon} />
           <section className={styles.board} ref={board}>

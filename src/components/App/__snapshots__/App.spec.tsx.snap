@@ -26,7 +26,7 @@ exports[`<App /> should render the initial state of the game board with difficul
         </select>
       </section>
       <h1
-        class="header"
+        class="heading"
       >
         Tic Tac Toe
       </h1>

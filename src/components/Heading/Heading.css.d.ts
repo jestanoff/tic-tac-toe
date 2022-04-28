@@ -3,7 +3,7 @@
 interface CssExports {
   'fontPrimary': string;
   'greyQuaternary': string;
-  'header': string;
+  'heading': string;
 }
 export const cssExports: CssExports;
 export default cssExports;

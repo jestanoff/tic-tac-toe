@@ -1,6 +1,5 @@
 import * as React from 'react';
 import { render, screen } from '@testing-library/react';
-import '@testing-library/jest-dom';
 import Board from './index';
 import { NUMBER_OF_SPACES } from '../../constants';
 

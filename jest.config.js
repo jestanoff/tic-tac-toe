@@ -1,4 +1,5 @@
 module.exports = {
+  setupFilesAfterEnv: ['<rootDir>jestGlobalSetup.js'],
   moduleDirectories: ['node_modules', 'src'],
   testEnvironment: 'jest-environment-jsdom',
   transform: {
