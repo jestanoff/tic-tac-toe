@@ -1,0 +1,24 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Select /> should render a select html control with options 1`] = `
+<DocumentFragment>
+  <section
+    class="container"
+  >
+    <select
+      title="Difficulty selector"
+    >
+      <option
+        value="Choose Me"
+      >
+        Choose Me
+      </option>
+      <option
+        value="Pick Me"
+      >
+        Pick Me
+      </option>
+    </select>
+  </section>
+</DocumentFragment>
+`;

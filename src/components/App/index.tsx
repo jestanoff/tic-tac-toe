@@ -128,7 +128,7 @@ const App = () => {
     (event: React.ChangeEvent<HTMLSelectElement>) => {
       setState((prevState) => ({
         ...prevState,
-        difficulty: event.target.value,
+        difficulty: event?.target?.value,
       }));
 
       resetGame();
@@ -147,7 +147,7 @@ const App = () => {
       <CSSTransition timeout={timeout}>
         <div className={styles.container} id="main-container">
           {outcome.winner === PLAYER_X && <Fireworks handleClick={resetGame} />}
-          <Select current={difficulty} options={options} onChange={handleDifficultyChange} />
+          <Select current={difficulty} options={options} handleChange={handleDifficultyChange} />
           <Heading title="Tic Tac Toe" />
           <ScoreBoard outcome={outcome.winner} playerTurn={playerTurn} />
           <NotificationBar icon={icon} message={notification} showIcon={showIcon} />
