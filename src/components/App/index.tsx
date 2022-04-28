@@ -57,7 +57,7 @@ const initialState: State = {
 };
 const options = [EASY, HARD];
 
-const TicTacToeApp = () => {
+const App = () => {
   const [
     { boardStatus, difficulty, isBoardUiDisabled, notification, outcome, playerTurn, timeoutId },
     setState,
@@ -102,11 +102,12 @@ const TicTacToeApp = () => {
   }, [timeoutId]);
 
   const handleSpaceClick = React.useCallback(
-    (cellIndex) => {
+    (cellIndex: number) => {
       if (boardStatus[cellIndex] === 0 && !isBoardUiDisabled) {
         const nextBoardStatus = boardStatus.slice();
         nextBoardStatus[cellIndex] = PLAYER_X;
         const nextOutcome = isGameOver(nextBoardStatus);
+
         setState((prevState) => ({
           ...prevState,
           boardStatus: nextBoardStatus,
@@ -124,7 +125,7 @@ const TicTacToeApp = () => {
   );
 
   const handleDifficultyChange = React.useCallback(
-    (event) => {
+    (event: React.ChangeEvent<HTMLSelectElement>) => {
       setState((prevState) => ({
         ...prevState,
         difficulty: event.target.value,
@@ -169,4 +170,4 @@ const TicTacToeApp = () => {
   );
 };
 
-export default React.memo(TicTacToeApp);
+export default React.memo(App);

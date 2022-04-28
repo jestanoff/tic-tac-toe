@@ -1,10 +1,14 @@
 import * as React from 'react';
-import * as PropTypes from 'prop-types';
 import Score from 'components/Score';
 import { SYMBOLS, PLAYER_X, PLAYER_O, M_DASH } from '../../constants';
 import styles from './ScoresSection.css';
 
-const ScoreBoard = ({ playerTurn, outcome }) => {
+type ScoreBoardProps = {
+  outcome?: number,
+  playerTurn: number,
+};
+
+const ScoreBoard = ({ playerTurn, outcome = -1 }: ScoreBoardProps) => {
   const [state, setState] = React.useState({
     [PLAYER_X]: +localStorage.playerX || M_DASH,
     [PLAYER_O]: +localStorage.playerO || M_DASH,
@@ -36,15 +40,6 @@ const ScoreBoard = ({ playerTurn, outcome }) => {
       <Score score={state[PLAYER_O]} isActive={isScoreActive(PLAYER_O)} symbol={SYMBOLS[PLAYER_O]} />
     </section>
   );
-};
-
-ScoreBoard.propTypes = {
-  outcome: PropTypes.number,
-  playerTurn: PropTypes.number.isRequired,
-};
-
-ScoreBoard.defaultProps = {
-  outcome: -1,
 };
 
 export default React.memo(ScoreBoard);

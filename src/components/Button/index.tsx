@@ -1,14 +1,13 @@
 import * as React from 'react';
-import * as PropTypes from 'prop-types';
 import styles from './Button.css';
 
-interface Props {
+type ButtonProps = {
   disabled: boolean,
-  handleClick: Function,
+  handleClick: () => void,
   text: string,
 }
 
-const Button = ({ disabled, handleClick, text }: Props) => (
+const Button = ({ disabled, handleClick, text }: ButtonProps) => (
   <div className={styles.container}>
     <button className={styles.button} disabled={disabled} onClick={() => handleClick()}>
       {text}

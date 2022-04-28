@@ -1,14 +1,19 @@
 import * as React from 'react';
-import * as PropTypes from 'prop-types';
 import { DARK_GRAY, WHITE } from '../../constants';
 import styles from './Mark.css';
 
-const Mark = ({ isAnimated, overrideColor, type }) => {
+type MarkProps = {
+  isAnimated?: boolean,
+  overrideColor?: string,
+  type: string,
+}
+
+const Mark = ({ isAnimated = false, overrideColor, type }: MarkProps) => {
   return (
     <div className={styles.container}>
       {type === 'cross' && (
         <svg version="1.1" viewBox="0 0 500 500" preserveAspectRatio="xMinYMin meet" className={styles.svg}>
-          <line x1="130" y1="130" x2="130" y2="130" strokeWidth="50" stroke={overrideColor || DARK_GRAY}>
+          <line x1="130" y1="130" x2="130" y2="130" strokeWidth="50" stroke={overrideColor ?? DARK_GRAY}>
             <animate
               attributeType="XML"
               attributeName="x2"
@@ -89,17 +94,6 @@ const Mark = ({ isAnimated, overrideColor, type }) => {
       )}
     </div>
   );
-};
-
-Mark.propTypes = {
-  isAnimated: PropTypes.bool,
-  overrideColor: PropTypes.string,
-  type: PropTypes.string.isRequired,
-};
-
-Mark.defaultProps = {
-  isAnimated: false,
-  overrideColor: undefined,
 };
 
 export default React.memo(Mark);

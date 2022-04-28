@@ -1,7 +1,10 @@
 import * as React from 'react';
-import * as PropTypes from 'prop-types';
 import { startFireworks } from 'helpers';
 import styles from './Fireworks.css';
+
+type FireworksProps = {
+  handleClick: () => void,
+};
 
 const Fireworks = ({ handleClick }) => {
   React.useEffect(() => {
@@ -11,10 +14,6 @@ const Fireworks = ({ handleClick }) => {
   }, [handleClick]);
 
   return <canvas id="canvas" className={styles.canvas} onClick={handleClick} />;
-};
-
-Fireworks.propTypes = {
-  handleClick: PropTypes.func.isRequired,
 };
 
 export default React.memo(Fireworks);

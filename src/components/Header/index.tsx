@@ -1,11 +1,10 @@
 import * as React from 'react';
-import * as PropTypes from 'prop-types';
 import styles from './Header.css';
 
-const Header = ({ title }) => <h1 className={styles.header}>{title}</h1>;
+type HeaderProps = {
+  title: string,
+}
 
-Header.propTypes = {
-  title: PropTypes.string.isRequired,
-};
+const Header = ({ title }: HeaderProps) => <h1 className={styles.header}>{title}</h1>;
 
 export default React.memo(Header);

@@ -1,7 +1,12 @@
 import * as React from 'react';
-import * as PropTypes from 'prop-types';
 import { COORDS } from '../../constants';
 import styles from './WinningLine.css';
+
+type WinningLineProps = {
+  color: string,
+  line: number,
+  handleClick: () => void,
+};
 
 const WinningLine = ({ color, line, handleClick }) => {
   const [x1, y1, x2, y2] = COORDS[line];
@@ -36,12 +41,6 @@ const WinningLine = ({ color, line, handleClick }) => {
       </div>
     </div>
   );
-};
-
-WinningLine.propTypes = {
-  color: PropTypes.string.isRequired,
-  line: PropTypes.number.isRequired,
-  handleClick: PropTypes.func.isRequired,
 };
 
 export default React.memo(WinningLine);
