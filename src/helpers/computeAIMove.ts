@@ -1,4 +1,4 @@
-import { HARD } from '../constants';
+import { IMPOSSIBLE } from '../constants';
 import MiniMax from 'helpers/miniMax';
 
 function getAvailableMoves(boardStatus: number[]): number[] {
@@ -21,7 +21,7 @@ function getRandomMove(board: number[]): number[] {
 }
 
 export default function computeAIMove(board: number[], difficulty: string): number[] {
-  if (difficulty === HARD) {
+  if (difficulty === IMPOSSIBLE) {
     const minMax = new MiniMax();
     return minMax.makeAIMove(board);
   }

@@ -11,16 +11,16 @@ import Fireworks from 'components/Fireworks';
 import { isGameOver, computeAIMove, getNotification } from 'helpers';
 import {
   AI_WAITING_TIME,
+  DARK_GRAY,
   DRAW,
+  EASY,
+  IMPOSSIBLE,
+  NUMBER_OF_SPACES,
   PLAYER_O,
   PLAYER_X,
-  NUMBER_OF_SPACES,
+  RESET,
   SYMBOLS,
   UNRESOLVED,
-  EASY,
-  HARD,
-  RESET,
-  DARK_GRAY,
   WHITE,
 } from '../../constants';
 import 'css/font.css';
@@ -55,7 +55,7 @@ const initialState: State = {
   outcome: { winner: UNRESOLVED, line: UNRESOLVED },
   playerTurn: PLAYER_X,
 };
-const options = [EASY, HARD];
+const options = [EASY, IMPOSSIBLE];
 
 const App = () => {
   const [
