@@ -1,22 +1,28 @@
 @value fontPrimary from "css/font.css";
 @value bluePrimary from "css/colors.css";
+@value greyTertiary from "css/colors.css";
 
 .button {
-    background: none;
-    border: none;
-    color: bluePrimary;
-    cursor: pointer;
-    font-family: fontPrimary;
-    font-size: 18px;
-    text-transform: uppercase;
-    width: 100%;
+  background: none;
+  border: none;
+  color: bluePrimary;
+  cursor: pointer;
+  font-family: fontPrimary;
+  font-size: 18px;
+  text-transform: uppercase;
+  width: 100%;
 }
 
 .button:focus {
-    outline:none;
+  outline: none;
+}
+
+.button:disabled {
+  color: greyTertiary;
+  cursor: no-drop;
 }
 
 .container {
-    padding: 10px 0;
-    text-align: center;
+  padding: 10px 0;
+  text-align: center;
 }

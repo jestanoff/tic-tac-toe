@@ -2,17 +2,18 @@ import * as React from 'react';
 import * as PropTypes from 'prop-types';
 import styles from './Button.css';
 
-const Button = ({ text, handleClick }) => (
+interface Props {
+  disabled: boolean,
+  handleClick: Function,
+  text: string,
+}
+
+const Button = ({ disabled, handleClick, text }: Props) => (
   <div className={styles.container}>
-    <button className={styles.button} onClick={handleClick}>
+    <button className={styles.button} disabled={disabled} onClick={() => handleClick()}>
       {text}
     </button>
   </div>
 );
-
-Button.propTypes = {
-  handleClick: PropTypes.func.isRequired,
-  text: PropTypes.string.isRequired,
-};
 
 export default React.memo(Button);

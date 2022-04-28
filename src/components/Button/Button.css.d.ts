@@ -5,6 +5,7 @@ interface CssExports {
   'button': string;
   'container': string;
   'fontPrimary': string;
+  'greyTertiary': string;
 }
 export const cssExports: CssExports;
 export default cssExports;

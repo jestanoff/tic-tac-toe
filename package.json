@@ -30,7 +30,6 @@
     "@types/react-dom": "18.0.2",
     "react": "18.1.0",
     "react-dom": "18.1.0",
-    "react-tap-event-plugin": "^2.0.1",
     "react-transition-group": "^4.4.1",
     "uuid": "^3.0.1"
   },

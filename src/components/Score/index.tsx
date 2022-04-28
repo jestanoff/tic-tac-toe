@@ -5,11 +5,11 @@ import { DARK_GRAY } from '../../constants';
 import styles from './Score.css';
 
 const Score = ({ isActive, score, symbol }) => (
-  <div className={isActive ? styles.active : styles.container}>
+  <div className={isActive ? styles.active : styles.container} data-testid={`score-for-player-${symbol}`}>
     <span className={styles.mark}>
       <Mark type={symbol} overrideColor={DARK_GRAY} />
     </span>
-    <span className={styles.score}>{score}</span>
+    <span aria-live='polite' className={styles.score} title={`Player ${symbol} has ${score} points`}>{score}</span>
   </div>
 );
 

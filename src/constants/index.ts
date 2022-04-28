@@ -39,7 +39,7 @@ export const COORDS: Coords = {
 };
 
 export const AI_WAITING_TIME = 700;
-export const NUM_OF_CELLS = 9;
+export const NUMBER_OF_SPACES = 9;
 export const PLAYER_X = 1;
 export const PLAYER_O = 2;
 export const X_WON = 1;

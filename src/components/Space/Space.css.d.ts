@@ -3,10 +3,10 @@
 interface CssExports {
   'blueSecondary': string;
   'bottom': string;
-  'cell': string;
   'greyPrimary': string;
   'left': string;
   'right': string;
+  'space': string;
   'symbolBlack': string;
   'symbolWhite': string;
   'top': string;

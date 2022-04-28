@@ -7,7 +7,7 @@ import styles from './Space.css';
 const Space = ({ id, cssClasses, handleSpaceClick, status }) => {
   const title = `${cssClasses.join(' ')} space`;
   const generateStyles = () =>
-    cssClasses.length ? cssClasses.map((val) => `${styles[val]} ${styles.cell}`).join(' ') : styles.cell;
+    cssClasses.length ? cssClasses.map((val) => `${styles[val]} ${styles.space}`).join(' ') : styles.space;
   const handleClick = React.useCallback(() => {
     handleSpaceClick(id);
   }, [handleSpaceClick, id]);

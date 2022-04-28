@@ -14,7 +14,7 @@ import {
   DRAW,
   PLAYER_O,
   PLAYER_X,
-  NUM_OF_CELLS,
+  NUMBER_OF_SPACES,
   SYMBOLS,
   UNRESOLVED,
   EASY,
@@ -31,8 +31,8 @@ interface Board {
 }
 
 interface Outcome {
-  winner: number;
   line: number;
+  winner: number;
 }
 
 interface State {
@@ -47,9 +47,9 @@ interface State {
 }
 
 const initialState: State = {
-  boardStatus: Array(NUM_OF_CELLS).fill(0),
+  boardStatus: Array(NUMBER_OF_SPACES).fill(0),
   difficulty: EASY,
-  history: [{ board: Array(NUM_OF_CELLS).fill(0) }],
+  history: [{ board: Array(NUMBER_OF_SPACES).fill(0) }],
   isBoardUiDisabled: false,
   notification: 'Start game by clicking on any cell',
   outcome: { winner: UNRESOLVED, line: UNRESOLVED },
@@ -139,16 +139,17 @@ const TicTacToeApp = () => {
   const icon = SYMBOLS[outcome.winner] || SYMBOLS[playerTurn];
   const showWinningLine = outcome.line > UNRESOLVED;
   const timeout = React.useMemo(() => ({ enter: 300, exit: 1 }), []);
+  const isResetDisabled = React.useMemo(() => !boardStatus.some(Boolean), [boardStatus]);
 
   return (
     <TransitionGroup>
-      <CSSTransition classNames="example" timeout={timeout}>
+      <CSSTransition timeout={timeout}>
         <div className={styles.container} id="main-container">
           {outcome.winner === PLAYER_X && <Fireworks handleClick={resetGame} />}
           <Select current={difficulty} options={options} onChange={handleDifficultyChange} />
           <Header title="Tic Tac Toe" />
           <ScoreBoard outcome={outcome.winner} playerTurn={playerTurn} />
-          <NotificationBar icon={icon} msg={notification} showIcon={showIcon} />
+          <NotificationBar icon={icon} message={notification} showIcon={showIcon} />
           <section className={styles.board} ref={board}>
             <div className={styles.innerContainer}>
               {showWinningLine && (
@@ -161,7 +162,7 @@ const TicTacToeApp = () => {
               <Board boardStatus={boardStatus} handleSpaceClick={handleSpaceClick} />
             </div>
           </section>
-          <Button text={RESET} handleClick={resetGame} />
+          <Button disabled={isResetDisabled} handleClick={resetGame} text={RESET} />
         </div>
       </CSSTransition>
     </TransitionGroup>
