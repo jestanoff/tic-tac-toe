@@ -5,13 +5,13 @@ import styles from './NotificationBar.css';
 
 type NotificationBarProps = {
   message: string,
-  icon: 'cross' | 'circle',
+  icon?: string,
   showIcon?: boolean,
 }
 
 const NotificationBar = ({ icon, message, showIcon = false }: NotificationBarProps) => (
   <h2 className={styles.container}>
-    {showIcon && (
+    {showIcon && !!icon && (
       <span className={styles.icon}>
         <Mark overrideColor="black" type={icon} />
       </span>
