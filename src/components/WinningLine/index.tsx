@@ -3,9 +3,9 @@ import { COORDS } from '../../constants';
 import styles from './WinningLine.css';
 
 type WinningLineProps = {
-  color: string,
-  line: number,
-  handleClick: () => void,
+  color: string;
+  line: number;
+  handleClick: () => void;
 };
 
 const WinningLine = ({ color, line, handleClick }) => {
@@ -14,27 +14,33 @@ const WinningLine = ({ color, line, handleClick }) => {
   return (
     <div className={styles.container}>
       <div>
-        <svg onClick={handleClick} version="1.1" viewBox="0 0 500 500" preserveAspectRatio="xMinYMin meet">
+        <svg
+          data-testid='winner-line'
+          onClick={handleClick}
+          preserveAspectRatio="xMinYMin meet"
+          version="1.1"
+          viewBox="0 0 500 500"
+        >
           <line x1={x1} y1={y1} x2={x1} y2={y1} strokeWidth="16" stroke={color}>
             <animate
-              attributeType="XML"
               attributeName="x2"
-              from={x1}
-              to={x2}
-              dur="125ms"
-              repeatCount="1"
+              attributeType="XML"
               begin="250ms"
+              dur="125ms"
               fill="freeze"
+              from={x1}
+              repeatCount="1"
+              to={x2}
             />
             <animate
-              attributeType="XML"
               attributeName="y2"
-              from={y1}
-              to={y2}
-              dur="125ms"
-              repeatCount="1"
+              attributeType="XML"
               begin="250ms"
+              dur="125ms"
               fill="freeze"
+              from={y1}
+              repeatCount="1"
+              to={y2}
             />
           </line>
         </svg>

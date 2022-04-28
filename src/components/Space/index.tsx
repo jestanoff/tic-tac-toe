@@ -6,13 +6,13 @@ import styles from './Space.css';
 
 type SpaceType = {
   id: number,
-  handleSpaceClick: () => void,
-  status?: 0 | 1,
+  handleSpaceClick: (id: number) => void,
+  status?: number,
 }
 
 const cx = classNames.bind(styles);
 
-const Space = ({ id, handleSpaceClick, status = 0 }) => {
+const Space = ({ id, handleSpaceClick, status = 0 }: SpaceType) => {
   const hasBeenMarked = !!status;
   const title = `${CSS_CLASSES[id].join(' ')} ${hasBeenMarked ? `space marked by ${SYMBOLS[status]}` : 'empty space'}`;
   const capitalisedTitle = `${title.charAt(0).toUpperCase()}${title.slice(1)}`;

@@ -1,0 +1,10 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Space /> should render a top space 1`] = `
+<DocumentFragment>
+  <button
+    class="space top left"
+    title="Top left empty space"
+  />
+</DocumentFragment>
+`;

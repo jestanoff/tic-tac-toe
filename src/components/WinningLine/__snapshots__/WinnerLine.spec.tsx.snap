@@ -1,0 +1,48 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<WinnerLine /> should render an animated line with color 1`] = `
+<DocumentFragment>
+  <div
+    class="container"
+  >
+    <div>
+      <svg
+        data-testid="winner-line"
+        preserveAspectRatio="xMinYMin meet"
+        version="1.1"
+        viewBox="0 0 500 500"
+      >
+        <line
+          stroke="#fff000"
+          stroke-width="16"
+          x1="82"
+          x2="82"
+          y1="30"
+          y2="30"
+        >
+          <animate
+            attributeName="x2"
+            attributeType="XML"
+            begin="250ms"
+            dur="125ms"
+            fill="freeze"
+            from="82"
+            repeatCount="1"
+            to="82"
+          />
+          <animate
+            attributeName="y2"
+            attributeType="XML"
+            begin="250ms"
+            dur="125ms"
+            fill="freeze"
+            from="30"
+            repeatCount="1"
+            to="470"
+          />
+        </line>
+      </svg>
+    </div>
+  </div>
+</DocumentFragment>
+`;
