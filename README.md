@@ -1,15 +1,15 @@
 # Tic Tac Toe
-## nice game writen in react as a side project
-- two difficulties of AI using Minimax algorithm
-- based on Google material design
+## nice game written in react as a side project
+- Has two difficulties of AI using Minimax algorithm
+- Based on Google material design
 
 Live app [jestanoff.github.io/tic-tac-toe/](https://jestanoff.github.io/tic-tac-toe/)
 
 
-### To run localy clone this repo
+### To run locally clone this repo
 `git clone git@github.com:jestanoff/tic-tac-toe.git`
 
-### Install dependancies
+### Install dependencies
 `yarn`
 
 ### Run the dev server
@@ -19,4 +19,4 @@ Live app [jestanoff.github.io/tic-tac-toe/](https://jestanoff.github.io/tic-tac-
 `yarn build`
 
 ### Run test suite
-`yarn test`
+`yarn test` or `yarn test-watch`
