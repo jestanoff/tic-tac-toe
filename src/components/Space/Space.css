@@ -1,7 +1,6 @@
 @value blueSecondary, greyPrimary from "../../css/colors.css";
 
 .space {
-  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
   background: transparent;
   border: 3px solid blueSecondary;
   box-sizing: border-box;

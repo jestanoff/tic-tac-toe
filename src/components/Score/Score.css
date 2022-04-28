@@ -2,32 +2,32 @@
 @value fontPrimary from "css/font.css";
 
 .mark {
-    width: 28px;
-    height: 28px;
-    display: inline-block;
+  display: inline-block;
+  height: 28px;
+  width: 28px;
 }
 
 .container {
-    background: white;
-    display: inline-block;
-    width: 48%;
-    box-shadow: 0 0 1px greyTertiary;
-    border-bottom: 3px solid transparent;
-    box-sizing: border-box;
-    padding: 5px 4% 0 2%;
-    margin: 1%;
+  background: white;
+  border-bottom: 3px solid transparent;
+  box-shadow: 0 0 1px greyTertiary;
+  box-sizing: border-box;
+  display: inline-block;
+  margin: 1%;
+  padding: 5px 4% 0 2%;
+  width: 48%;
 }
 
 .active {
-    composes: container;
-    border-bottom-color: bluePrimary;
-    box-shadow: 0 0 6px greyTertiary;
+  composes: container;
+  border-bottom-color: bluePrimary;
+  box-shadow: 0 0 6px greyTertiary;
 }
 
 .score {
-    color: greyPrimary;
-    font-size: 20px;
-    font-family: fontPrimary;
-    float: right;
-    padding-top: 2px;
+  color: greyPrimary;
+  float: right;
+  font-family: fontPrimary;
+  font-size: 20px;
+  padding-top: 2px;
 }

@@ -2,10 +2,10 @@
 @value greyQuaternary from "css/colors.css";
 
 .header {
-    font-family: fontPrimary;
-    margin: 0;
-    color: greyQuaternary;
-    padding-bottom: 12px;
-    text-align: center;
-    font-size: 26px;
+  color: greyQuaternary;
+  font-family: fontPrimary;
+  font-size: 26px;
+  margin: 0;
+  padding-bottom: 12px;
+  text-align: center;
 }

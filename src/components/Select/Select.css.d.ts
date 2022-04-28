@@ -3,7 +3,6 @@
 interface CssExports {
   'container': string;
   'fontPrimary': string;
-  'option': string;
   'select': string;
 }
 export const cssExports: CssExports;

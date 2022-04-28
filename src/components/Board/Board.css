@@ -1,9 +1,9 @@
 .container {
-    box-sizing: border-box;
+  box-sizing: border-box;
 }
 
 .container:after {
   clear: both;
-  content: "";
+  content: '';
   display: table;
 }

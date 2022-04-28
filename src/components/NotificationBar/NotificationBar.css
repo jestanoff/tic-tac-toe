@@ -2,18 +2,18 @@
 @value fontPrimary from "css/font.css";
 
 .container {
-    color: greyPrimary;
-    font-family: fontPrimary;
-    font-size: 12px;
-    height: 16px;
-    margin: 10px 0;
-    text-align: center;
+  color: greyPrimary;
+  font-family: fontPrimary;
+  font-size: 12px;
+  height: 16px;
+  margin: 10px 0;
+  text-align: center;
 }
 
 .icon {
-    display: inline-block;
-    height: 16px;
-    margin-right: 2px;
-    vertical-align: bottom;
-    width: 16px;
+  display: inline-block;
+  height: 16px;
+  margin-right: 2px;
+  vertical-align: bottom;
+  width: 16px;
 }

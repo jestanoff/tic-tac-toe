@@ -1,15 +1,15 @@
 .container {
-    display: inline-block;
-    overflow: hidden;
-    padding-bottom: 100%;
-    position: relative;
-    width: 100%;
-    text-align: center;
+  display: inline-block;
+  overflow: hidden;
+  padding-bottom: 100%;
+  position: relative;
+  text-align: center;
+  width: 100%;
 }
 
 .svg {
-    display: inline-block;
-    left: 0;
-    position: absolute;
-    top: 0;
+  display: inline-block;
+  left: 0;
+  position: absolute;
+  top: 0;
 }

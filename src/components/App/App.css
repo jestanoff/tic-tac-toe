@@ -1,43 +1,39 @@
 @value bluePrimary, greySecondary from "css/colors.css";
 
 .container {
-    background: greySecondary;
-    box-shadow: 0 0 2px rgba(0, 0, 0, .4);
-    margin: 50px auto;
-    max-width: 500px;
-    min-width: 240px;
-    position: relative;
+  background: greySecondary;
+  box-shadow: 0 0 2px rgba(0, 0, 0, 0.4);
+  margin: 50px auto;
+  max-width: 500px;
+  min-width: 240px;
+  position: relative;
 }
 
 .board {
-    background-color: bluePrimary;
-    position: relative;
-    left: 0;
-    /*-webkit-backface-visibility: hidden;
-    backface-visibility: hidden;*/
-    -webkit-transition: -webkit-transform .5s;
-    transition: transform .5s;
+  background-color: bluePrimary;
+  left: 0;
+  position: relative;
+  transition: transform 0.5s;
 }
 
 .flip {
-    -webkit-transform: rotateY(-180deg);
-    transform: rotateY(-180deg);
+  transform: rotateY(-180deg);
 }
 
 .innerContainer {
-    width: 240px;
-    margin: 0 auto;
-    padding: 16px 0;
-    position: relative;
+  margin: 0 auto;
+  padding: 16px 0;
+  position: relative;
+  width: 240px;
 }
 
 :global {
-    .example-enter {
-      top: -500px;
-    }
+  .example-enter {
+    top: -500px;
+  }
 
-    .example-enter.example-enter-active {
-      top: 0px;
-      transition: top .3s ease-out;
-    }
+  .example-enter.example-enter-active {
+    top: 0px;
+    transition: top 0.3s ease-out;
+  }
 }
