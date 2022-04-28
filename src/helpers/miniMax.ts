@@ -11,17 +11,20 @@ export default class MiniMax {
   }
 
   static makeMove(move: number, player: number, board: number[]): number[] | null {
-    const newBoard = board.slice();
+    const newBoard = [...board];
+
     if (newBoard[move] === 0) {
       newBoard[move] = player;
       return newBoard;
     }
+
     return null;
   }
 
   makeAIMove(board: number[]): number[] {
-    const newBoard = board.slice();
+    const newBoard = [...board];
     newBoard[this.findMove(board)] = this.maxPlayer;
+
     return newBoard;
   }
 
@@ -39,10 +42,12 @@ export default class MiniMax {
         }
       }
     }
+
     return move;
   }
 
   minValue(board: number[]): number {
+    let bestMoveValue = 100;
     const outcome = isGameOver(board).winner;
 
     if (outcome === this.maxPlayer) {
@@ -52,8 +57,6 @@ export default class MiniMax {
     } else if (outcome === DRAW) {
       return 0;
     }
-
-    let bestMoveValue = 100;
 
     for (let i = 0; i < board.length; i += 1) {
       const newBoard = MiniMax.makeMove(i, this.minPlayer, board);
@@ -69,7 +72,9 @@ export default class MiniMax {
   }
 
   maxValue(board: number[]): number {
+    let bestMoveValue = -100;
     const outcome = isGameOver(board).winner;
+
     if (outcome === this.maxPlayer) {
       return 1;
     } else if (outcome === this.minPlayer) {
@@ -77,7 +82,7 @@ export default class MiniMax {
     } else if (outcome === DRAW) {
       return 0;
     }
-    let bestMoveValue = -100;
+
     for (let i = 0; i < board.length; i += 1) {
       const newBoard = MiniMax.makeMove(i, this.maxPlayer, board);
       if (newBoard) {
@@ -87,6 +92,7 @@ export default class MiniMax {
         }
       }
     }
+
     return bestMoveValue;
   }
 }
