@@ -48,7 +48,7 @@
     top: 0;
 }
 
-.Cell__cell___3nImo {
+.Space__cell___3sFFF {
     box-sizing: border-box;
     border: 3px solid #336a86;
     float: left;
@@ -63,27 +63,27 @@
     -webkit-tap-highlight-color: rgba(0,0,0,0);
 }
 
-.Cell__left___2ahyK {
+.Space__left___1OfBS {
     border-left-color: transparent;
 }
 
-.Cell__right___1OEjG {
+.Space__right___xMdPn {
     border-right-color: transparent;
 }
 
-.Cell__top___jmzrj {
+.Space__top___1tuaP {
     border-top-color: transparent;
 }
 
-.Cell__bottom___2RAsj {
+.Space__bottom___2oEOS {
     border-bottom-color: transparent;
 }
 
-.Cell__symbolWhite___6nKxk {
+.Space__symbolWhite___2O0nC {
     color: white;
 }
 
-.Cell__symbolBlack___2jKVE {
+.Space__symbolBlack___3errD {
     color: #333;
 }
 
