@@ -7,9 +7,10 @@
   float: left;
   font-size: 60px;
   height: 80px;
+  padding: 0;
   text-align: center;
   user-select: none;
-  width: 33.33%;
+  width: 80px;
 }
 
 .left {

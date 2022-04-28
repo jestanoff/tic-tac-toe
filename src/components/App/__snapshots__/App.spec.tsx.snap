@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<App /> should render the initial state of the game 1`] = `
+exports[`<App /> should render the initial state of the game board with difficulty selector and start notification 1`] = `
 <DocumentFragment>
   <div>
     <div
@@ -35,6 +35,7 @@ exports[`<App /> should render the initial state of the game 1`] = `
       >
         <div
           class="active"
+          data-testid="score-for-player-cross"
         >
           <span
             class="mark"
@@ -120,13 +121,16 @@ exports[`<App /> should render the initial state of the game 1`] = `
             </div>
           </span>
           <span
+            aria-live="polite"
             class="score"
+            title="Player cross has 0 points"
           >
             —
           </span>
         </div>
         <div
           class="container"
+          data-testid="score-for-player-circle"
         >
           <span
             class="mark"
@@ -164,7 +168,9 @@ exports[`<App /> should render the initial state of the game 1`] = `
             </div>
           </span>
           <span
+            aria-live="polite"
             class="score"
+            title="Player circle has 0 points"
           >
             —
           </span>
@@ -173,7 +179,12 @@ exports[`<App /> should render the initial state of the game 1`] = `
       <h2
         class="container"
       >
-        Start game by clicking on any cell
+        <span
+          aria-live="polite"
+          title="Player cross can start the game by selecting any empty space"
+        >
+          Start the game by selecting any empty space
+        </span>
       </h2>
       <section
         class="board"
@@ -185,40 +196,40 @@ exports[`<App /> should render the initial state of the game 1`] = `
             class="container"
           >
             <button
-              class="top cell left cell"
-              title="top left space"
+              class="space top left"
+              title="Top left empty space"
             />
             <button
-              class="top cell undefined cell"
-              title="top center space"
+              class="space top center"
+              title="Top center empty space"
             />
             <button
-              class="top cell right cell"
-              title="top right space"
+              class="space top right"
+              title="Top right empty space"
             />
             <button
-              class="left cell undefined cell"
-              title="left middle space"
+              class="space left middle"
+              title="Left middle empty space"
             />
             <button
-              class="undefined cell undefined cell"
-              title="center middle space"
+              class="space center middle"
+              title="Center middle empty space"
             />
             <button
-              class="right cell undefined cell"
-              title="right middle space"
+              class="space right middle"
+              title="Right middle empty space"
             />
             <button
-              class="bottom cell left cell"
-              title="bottom left space"
+              class="space bottom left"
+              title="Bottom left empty space"
             />
             <button
-              class="bottom cell undefined cell"
-              title="bottom center space"
+              class="space bottom center"
+              title="Bottom center empty space"
             />
             <button
-              class="bottom cell right cell"
-              title="bottom right space"
+              class="space bottom right"
+              title="Bottom right empty space"
             />
           </section>
         </div>
@@ -228,6 +239,7 @@ exports[`<App /> should render the initial state of the game 1`] = `
       >
         <button
           class="button"
+          disabled=""
         >
           Reset
         </button>

@@ -11,7 +11,7 @@ const NotificationBar = ({ icon, message, showIcon = false }) => (
         <Mark overrideColor="black" type={icon} />
       </span>
     )}
-    <span aria-live='polite' title={`Player ${SYMBOLS[1]} ${message}`}>{message}</span>
+    <span aria-live='polite' title={`Player ${SYMBOLS[1]} can ${message.toLowerCase()}`}>{message}</span>
   </h2>
 );
 

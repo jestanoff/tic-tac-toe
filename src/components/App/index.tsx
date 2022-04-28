@@ -51,7 +51,7 @@ const initialState: State = {
   difficulty: EASY,
   history: [{ board: Array(NUMBER_OF_SPACES).fill(0) }],
   isBoardUiDisabled: false,
-  notification: 'Start game by clicking on any cell',
+  notification: 'Start the game by selecting any empty space',
   outcome: { winner: UNRESOLVED, line: UNRESOLVED },
   playerTurn: PLAYER_X,
 };
