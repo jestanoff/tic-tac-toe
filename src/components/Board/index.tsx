@@ -1,15 +1,15 @@
 import * as React from 'react';
 import * as PropTypes from 'prop-types';
-import Cell from 'components/Cell';
+import Space from 'components/Space';
 import styles from './Board.css';
 import { CSS_CLASSES, NUM_OF_CELLS } from '../../constants';
 
-const Board = ({ boardStatus, handleCellClick }) => (
+const Board = ({ boardStatus, handleSpaceClick }) => (
   <section className={styles.container}>
     {Array.from({ length: NUM_OF_CELLS }, (_, i) => i).map((index) => (
-      <Cell
+      <Space
         cssClasses={CSS_CLASSES[index]}
-        handleCellClick={handleCellClick}
+        handleSpaceClick={handleSpaceClick}
         id={index}
         key={index}
         status={boardStatus[index]}
@@ -20,7 +20,7 @@ const Board = ({ boardStatus, handleCellClick }) => (
 
 Board.propTypes = {
   boardStatus: PropTypes.arrayOf(PropTypes.number).isRequired,
-  handleCellClick: PropTypes.func.isRequired,
+  handleSpaceClick: PropTypes.func.isRequired,
 };
 
 export default React.memo(Board);

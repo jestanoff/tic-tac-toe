@@ -1,4 +1,10 @@
 module.exports = {
+  env: {
+    browser: true,
+    es6: true,
+    jest: true,
+    node: true,
+  },
   parser: '@typescript-eslint/parser',
   parserOptions: {
     ecmaVersion: 2020,
@@ -12,7 +18,7 @@ module.exports = {
       version: 'detected',
     },
   },
-  plugins: ['react-hooks', 'react-perf'],
+  plugins: ['react', 'react-hooks', 'react-perf', 'testing-library', 'jest'],
   extends: [
     'plugin:react/recommended',
     'plugin:@typescript-eslint/recommended',
@@ -20,5 +26,6 @@ module.exports = {
     'plugin:react-hooks/recommended',
     'prettier/@typescript-eslint',
     'plugin:prettier/recommended',
+    'plugin:jest/recommended',
   ],
 };

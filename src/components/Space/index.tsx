@@ -2,31 +2,32 @@ import * as React from 'react';
 import * as PropTypes from 'prop-types';
 import Mark from 'components/Mark';
 import { PLAYER_X } from '../../constants';
-import styles from './Cell.css';
+import styles from './Space.css';
 
-const Cell = ({ id, cssClasses, handleCellClick, status }) => {
+const Space = ({ id, cssClasses, handleSpaceClick, status }) => {
+  const title = `${cssClasses.join(' ')} space`;
   const generateStyles = () =>
     cssClasses.length ? cssClasses.map((val) => `${styles[val]} ${styles.cell}`).join(' ') : styles.cell;
   const handleClick = React.useCallback(() => {
-    handleCellClick(id);
-  }, [handleCellClick, id]);
+    handleSpaceClick(id);
+  }, [handleSpaceClick, id]);
 
   return (
-    <article className={generateStyles()} onClick={handleClick}>
+    <button className={generateStyles()} onClick={handleClick} title={title}>
       {status ? status === PLAYER_X ? <Mark type="cross" isAnimated /> : <Mark type="circle" isAnimated /> : ''}
-    </article>
+    </button>
   );
 };
 
-Cell.propTypes = {
+Space.propTypes = {
   cssClasses: PropTypes.arrayOf(PropTypes.string).isRequired,
-  handleCellClick: PropTypes.func.isRequired,
+  handleSpaceClick: PropTypes.func.isRequired,
   id: PropTypes.number.isRequired,
   status: PropTypes.number,
 };
 
-Cell.defaultProps = {
+Space.defaultProps = {
   status: 0,
 };
 
-export default React.memo(Cell);
+export default React.memo(Space);

@@ -4,14 +4,14 @@ import Mark from 'components/Mark';
 import styles from './NotificationBar.css';
 
 const NotificationBar = ({ icon, msg, showIcon }) => (
-  <div className={styles.container}>
+  <h2 className={styles.container}>
     {showIcon && (
       <span className={styles.icon}>
         <Mark type={icon} overrideColor="black" />
       </span>
     )}
     {msg}
-  </div>
+  </h2>
 );
 
 NotificationBar.propTypes = {

@@ -4,7 +4,7 @@ import styles from './Select.css';
 
 const Select = ({ current, onChange, options }) => (
   <section className={styles.container}>
-    <select onChange={onChange} value={current}>
+    <select onChange={onChange} title='Difficulty selector' value={current}>
       {options.map((option) => (
         <option value={option} key={option}>
           {option}

@@ -4,14 +4,14 @@ export const SYMBOLS = {
 };
 
 export const CSS_CLASSES = {
-  0: ['left', 'top'],
-  1: ['top'],
-  2: ['right', 'top'],
-  3: ['left'],
-  4: [],
-  5: ['right'],
+  0: ['top', 'left'],
+  1: ['top', 'center'],
+  2: ['top', 'right'],
+  3: ['left', 'middle'],
+  4: ['center', 'middle'],
+  5: ['right', 'middle'],
   6: ['bottom', 'left'],
-  7: ['bottom'],
+  7: ['bottom', 'center'],
   8: ['bottom', 'right'],
 };
 

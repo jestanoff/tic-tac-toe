@@ -101,7 +101,7 @@ const TicTacToeApp = () => {
     }
   }, [timeoutId]);
 
-  const handleCellClick = React.useCallback(
+  const handleSpaceClick = React.useCallback(
     (cellIndex) => {
       if (boardStatus[cellIndex] === 0 && !isBoardUiDisabled) {
         const nextBoardStatus = boardStatus.slice();
@@ -158,7 +158,7 @@ const TicTacToeApp = () => {
                   color={outcome.winner === PLAYER_X ? DARK_GRAY : WHITE}
                 />
               )}
-              <Board boardStatus={boardStatus} handleCellClick={handleCellClick} />
+              <Board boardStatus={boardStatus} handleSpaceClick={handleSpaceClick} />
             </div>
           </section>
           <Button text={RESET} handleClick={resetGame} />
