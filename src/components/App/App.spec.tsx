@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { render, screen } from '@testing-library/react'
+import { render, screen } from '@testing-library/react';
 import App from './index';
 
 describe('<App />', () => {
@@ -29,7 +29,7 @@ describe('<App />', () => {
     await screen.findByRole('combobox', { name: /Difficulty selector/i }); // Not actually async but just in case it becomes
     const easyOption: HTMLOptionElement = screen.getByRole('option', { name: /Easy/i });
     expect(easyOption).toBeInTheDocument();
-    expect(easyOption.selected).toBe(true)
+    expect(easyOption.selected).toBe(true);
     expect(screen.getByRole('option', { name: /Impossible/i })).toBeInTheDocument();
   });
 
@@ -48,7 +48,7 @@ describe('<App />', () => {
     expect(screen.getByRole('heading', { level: 2 })).toHaveTextContent('Start the game by selecting any empty space');
     expect(screen.getByTitle('Player cross can start the game by selecting any empty space')).toBeInTheDocument();
   });
-  
+
   test('should show "Reset" button that is disabled if no spaces has been marked', () => {
     render(<App />);
 

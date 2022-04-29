@@ -4,10 +4,10 @@ import { SYMBOLS } from '../../constants';
 import styles from './NotificationBar.css';
 
 type NotificationBarProps = {
-  message: string,
-  icon?: string,
-  showIcon?: boolean,
-}
+  message: string;
+  icon?: string;
+  showIcon?: boolean;
+};
 
 const NotificationBar = ({ icon, message, showIcon = false }: NotificationBarProps) => (
   <h2 className={styles.container}>
@@ -16,7 +16,9 @@ const NotificationBar = ({ icon, message, showIcon = false }: NotificationBarPro
         <Mark overrideColor="black" type={icon} />
       </span>
     )}
-    <span aria-live='polite' title={`Player ${SYMBOLS[1]} can ${message.toLowerCase()}`}>{message}</span>
+    <span aria-live="polite" title={`Player ${SYMBOLS[1]} can ${message.toLowerCase()}`}>
+      {message}
+    </span>
   </h2>
 );
 

@@ -3,7 +3,7 @@ import { startFireworks } from 'helpers';
 import styles from './Fireworks.css';
 
 type FireworksProps = {
-  handleClick: () => void,
+  handleClick: () => void;
 };
 
 const Fireworks = ({ handleClick }: FireworksProps) => {
@@ -13,7 +13,7 @@ const Fireworks = ({ handleClick }: FireworksProps) => {
     return () => clearTimeout(id);
   }, [handleClick]);
 
-  return <canvas id="canvas" role='button' className={styles.canvas} onClick={handleClick} />;
+  return <canvas id="canvas" role="button" className={styles.canvas} onClick={handleClick} />;
 };
 
 export default React.memo(Fireworks);

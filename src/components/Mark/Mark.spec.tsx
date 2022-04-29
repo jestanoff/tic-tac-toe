@@ -1,11 +1,10 @@
 import * as React from 'react';
-import { render, screen, waitFor } from '@testing-library/react';
-import userEvent from '@testing-library/user-event';
+import { render, screen } from '@testing-library/react';
 import Mark from './index';
 
 describe('<Mark />', () => {
   test('should render cross mark as SVG', () => {
-    render(<Mark type='cross' />);
+    render(<Mark type="cross" />);
 
     expect(screen.getByTestId('cross-mark')).toBeInTheDocument();
     expect(screen.queryByTestId('circle-mark')).not.toBeInTheDocument();
@@ -13,7 +12,7 @@ describe('<Mark />', () => {
   });
 
   test('should render circle mark as SVG', () => {
-    render(<Mark type='circle' />);
+    render(<Mark type="circle" />);
 
     expect(screen.getByTestId('circle-mark')).toBeInTheDocument();
     expect(screen.queryByTestId('cross-mark')).not.toBeInTheDocument();
@@ -21,19 +20,19 @@ describe('<Mark />', () => {
   });
 
   test('should add animation to circle mark', () => {
-    render(<Mark isAnimated type='circle' />);
+    render(<Mark isAnimated type="circle" />);
 
     expect(screen.getByTestId('circle-mark').children[0].children[0].getAttribute('dur')).toBe('250ms');
   });
 
   test('should not add animation to circle mark', () => {
-    render(<Mark isAnimated={false} type='circle' />);
+    render(<Mark isAnimated={false} type="circle" />);
 
     expect(screen.getByTestId('circle-mark').children[0].children[0].getAttribute('dur')).toBe('1ms');
   });
 
   test('should add animation to cross mark', () => {
-    render(<Mark isAnimated type='cross' />);
+    render(<Mark isAnimated type="cross" />);
     const mark = screen.getByTestId('cross-mark');
 
     expect(mark.children[0].children[0].getAttribute('dur')).toBe('125ms');
@@ -47,7 +46,7 @@ describe('<Mark />', () => {
   });
 
   test('should not add animation to cross mark', () => {
-    render(<Mark isAnimated={false} type='cross' />);
+    render(<Mark isAnimated={false} type="cross" />);
     const mark = screen.getByTestId('cross-mark');
 
     expect(mark.children[0].children[0].getAttribute('dur')).toBe('1ms');

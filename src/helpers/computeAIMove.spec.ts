@@ -1,9 +1,8 @@
 import computeAIMove from './computeAIMove';
-import MiniMax from 'helpers/miniMax';
 const mockMakeAIMove = jest.fn();
 jest.mock('helpers/miniMax', () => {
   return jest.fn().mockImplementation(() => {
-    return { makeAIMove: mockMakeAIMove }
+    return { makeAIMove: mockMakeAIMove };
   });
 });
 
@@ -26,7 +25,7 @@ describe('computeAIMove()', () => {
 
       expect(mockMakeAIMove).toHaveBeenCalled();
       expect(mockMakeAIMove).toHaveBeenCalledWith([1, 2, 3]);
-    })
+    });
   });
 
   describe('Easy difficulty', () => {
@@ -38,6 +37,6 @@ describe('computeAIMove()', () => {
       expect(spyRandom).toHaveBeenCalledWith();
       expect(spyFloor).toHaveBeenCalledTimes(1);
       expect(spyFloor).toHaveBeenCalledWith(expect.any(Number));
-    })
+    });
   });
 });

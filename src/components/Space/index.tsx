@@ -5,10 +5,10 @@ import { CSS_CLASSES, PLAYER_X, SYMBOLS } from '../../constants';
 import styles from './Space.css';
 
 type SpaceType = {
-  id: number,
-  handleSpaceClick: (id: number) => void,
-  status?: number,
-}
+  id: number;
+  handleSpaceClick: (id: number) => void;
+  status?: number;
+};
 
 const cx = classNames.bind(styles);
 

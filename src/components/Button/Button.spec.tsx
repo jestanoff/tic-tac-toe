@@ -3,13 +3,15 @@ import { render, screen, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import Button from './index';
 
+const emptyFn = () => undefined;
+
 describe('<Button />', () => {
   afterEach(() => {
     jest.clearAllMocks();
   });
 
   test('should render disabled button with text', () => {
-    render(<Button disabled handleClick={() => {}} text="A button" />);
+    render(<Button disabled handleClick={emptyFn} text="A button" />);
     const button = screen.getByRole('button', { name: /^A button$/i });
 
     expect(button).toBeInTheDocument();
@@ -25,7 +27,7 @@ describe('<Button />', () => {
   });
 
   test('should render enabled button with text', () => {
-    render(<Button disabled={false} handleClick={() => {}} text="Enabled button" />);
+    render(<Button disabled={false} handleClick={emptyFn} text="Enabled button" />);
     const button = screen.getByRole('button', { name: /^Enabled button$/i });
 
     expect(button).toBeInTheDocument();
@@ -43,6 +45,6 @@ describe('<Button />', () => {
 
     await waitFor(() => expect(handleClickMock).toHaveBeenCalled());
     expect(handleClickMock).toHaveBeenCalledTimes(1);
-    expect(handleClickMock).toHaveBeenCalledWith();
+    expect(handleClickMock).toHaveBeenCalledWith(expect.any(Object));
   });
 });

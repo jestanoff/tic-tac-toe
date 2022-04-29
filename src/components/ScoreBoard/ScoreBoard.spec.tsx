@@ -15,7 +15,7 @@ describe('<ScoreBoard />', () => {
     expect(asFragment()).toMatchSnapshot();
   });
 
-  test('should increment the score by 1 when circle player wins', () => {
+  test('should increment the score by 1 when cross player wins', () => {
     render(<ScoreBoard playerTurn={1} outcome={1} />);
 
     expect(screen.getByTitle('Player cross has 1 points')).toBeInTheDocument();

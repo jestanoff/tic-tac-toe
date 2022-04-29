@@ -4,8 +4,8 @@ import { SYMBOLS, PLAYER_X, PLAYER_O, M_DASH } from '../../constants';
 import styles from './ScoresSection.css';
 
 type ScoreBoardProps = {
-  outcome?: number,
-  playerTurn: number,
+  outcome?: number;
+  playerTurn: number;
 };
 
 const ScoreBoard = ({ playerTurn, outcome = -1 }: ScoreBoardProps) => {

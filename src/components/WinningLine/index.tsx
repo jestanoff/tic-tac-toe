@@ -8,14 +8,14 @@ type WinningLineProps = {
   handleClick: () => void;
 };
 
-const WinningLine = ({ color, line, handleClick }) => {
+const WinningLine = ({ color, line, handleClick }: WinningLineProps) => {
   const [x1, y1, x2, y2] = COORDS[line];
 
   return (
     <div className={styles.container}>
       <div>
         <svg
-          data-testid='winner-line'
+          data-testid="winner-line"
           onClick={handleClick}
           preserveAspectRatio="xMinYMin meet"
           version="1.1"

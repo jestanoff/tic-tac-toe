@@ -3,11 +3,13 @@ import { render, screen, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import Select from './index';
 
+const options = ['Choose Me', 'Pick Me'];
+const optionsAlt = ['1', '2', '3'];
+const emptyFn = () => null;
+
 describe('<Select />', () => {
   test('should render a select html control with options', () => {
-    const { asFragment } = render(
-      <Select current='Pick Me' options={['Choose Me', 'Pick Me']} handleChange={() => {}} />,
-    );
+    const { asFragment } = render(<Select current="Pick Me" options={options} handleChange={emptyFn} />);
 
     expect(screen.getByRole('combobox', { name: /Difficulty selector/i })).toBeInTheDocument();
     expect(screen.getAllByRole('option')).toHaveLength(2);
@@ -19,9 +21,9 @@ describe('<Select />', () => {
   test('should execute handleChange when a non active option is picked', async () => {
     expect.hasAssertions();
     const handleChangeMock = jest.fn();
-    render(<Select current='1' options={['1', '2', '3']} handleChange={handleChangeMock} />);
+    render(<Select current="1" options={optionsAlt} handleChange={handleChangeMock} />);
 
-    await userEvent.selectOptions(screen.getByRole('combobox', { name: /Difficulty selector/i }), '3')
+    await userEvent.selectOptions(screen.getByRole('combobox', { name: /Difficulty selector/i }), '3');
     await waitFor(() => expect(handleChangeMock).toHaveBeenCalled());
     expect(handleChangeMock).toHaveBeenCalledTimes(1);
     expect(handleChangeMock).toHaveBeenCalledWith(expect.any(Object));

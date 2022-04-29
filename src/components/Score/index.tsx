@@ -4,9 +4,9 @@ import { DARK_GRAY } from '../../constants';
 import styles from './Score.css';
 
 type ScoreProps = {
-  isActive: boolean,
-  score: number | string,
-  symbol: string,
+  isActive: boolean;
+  score: number | string;
+  symbol: string;
 };
 
 const Score = ({ isActive, score, symbol }: ScoreProps) => (
@@ -14,7 +14,9 @@ const Score = ({ isActive, score, symbol }: ScoreProps) => (
     <span className={styles.mark}>
       <Mark type={symbol} overrideColor={DARK_GRAY} />
     </span>
-    <span aria-live='polite' className={styles.score} title={`Player ${symbol} has ${Number(score) || 0} points`}>{score}</span>
+    <span aria-live="polite" className={styles.score} title={`Player ${symbol} has ${Number(score) || 0} points`}>
+      {score}
+    </span>
   </div>
 );
 

@@ -5,13 +5,13 @@ import { NUMBER_OF_SPACES } from '../../constants';
 
 describe('<Board />', () => {
   const boardStatus = [0, 2, 1, 0, 0, 0, 1, 0, 2];
-  const handleCellClick = () => {};
+  const handleCellClick = () => undefined;
 
   test('should render proper markup', () => {
     const { asFragment } = render(<Board boardStatus={boardStatus} handleSpaceClick={handleCellClick} />);
 
     expect(asFragment()).toMatchSnapshot();
-  })
+  });
 
   test('should render the board according to its status', () => {
     render(<Board boardStatus={boardStatus} handleSpaceClick={handleCellClick} />);
