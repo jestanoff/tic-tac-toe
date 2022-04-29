@@ -20,7 +20,7 @@ describe('<Fireworks />', () => {
     expect(asFragment()).toMatchSnapshot();
   });
 
-  test('should hide the execute the handleClick function when clicking on the canvas', async () => {
+  test('should execute the handleClick function when clicking on the canvas', async () => {
     const handleClickMock = jest.fn();
     render(
       <div id="main-container">
