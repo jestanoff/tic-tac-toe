@@ -7,19 +7,26 @@ type NotificationBarProps = {
   message: string;
   icon?: string;
   showIcon?: boolean;
+  winner: number;
 };
 
-const NotificationBar = ({ icon, message, showIcon = false }: NotificationBarProps) => (
-  <h2 className={styles.container}>
-    {showIcon && !!icon && (
-      <span className={styles.icon}>
-        <Mark overrideColor="black" type={icon} />
+const NotificationBar = ({ icon, message, showIcon = false, winner }: NotificationBarProps) => {
+  const title = [1, 2].includes(winner)
+    ? `Player ${SYMBOLS[winner]} has won!`
+    : `Player ${SYMBOLS[1]} can ${message.toLowerCase()}`;
+
+  return (
+    <h2 className={styles.container}>
+      {showIcon && !!icon && (
+        <span className={styles.icon}>
+          <Mark overrideColor="black" type={icon} />
+        </span>
+      )}
+      <span aria-live="polite" title={title}>
+        {message}
       </span>
-    )}
-    <span aria-live="polite" title={`Player ${SYMBOLS[1]} can ${message.toLowerCase()}`}>
-      {message}
-    </span>
-  </h2>
-);
+    </h2>
+  );
+};
 
 export default React.memo(NotificationBar);

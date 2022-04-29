@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { render, screen } from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
 import App from './index';
 
 describe('<App />', () => {
@@ -53,5 +54,36 @@ describe('<App />', () => {
     render(<App />);
 
     expect(screen.getByRole('button', { name: /Reset/i })).toBeDisabled();
+  });
+
+  test('should be able to play a game until win', async () => {
+    render(<App />);
+
+    await userEvent.selectOptions(screen.getByRole('combobox', { name: /Difficulty selector/i }), 'Impossible');
+    await screen.findByTitle('Player cross can start the game by selecting any empty space');
+    expect(screen.getByTitle('Player cross can start the game by selecting any empty space')).toBeInTheDocument();
+
+    await userEvent.click(screen.getByRole('button', { name: /Top left empty space/i }));
+    await screen.findByRole('button', { name: /Top left space marked by cross/i });
+    expect(screen.getByRole('button', { name: /Top left space marked by cross/i })).toBeInTheDocument();
+
+    await screen.findByRole('button', { name: /Center middle space marked by circle/i });
+    expect(screen.getByRole('button', { name: /Center middle space marked by circle/i })).toBeInTheDocument();
+
+    await userEvent.click(screen.getByRole('button', { name: /Top right empty space/i }));
+    await screen.findByRole('button', { name: /Top right space marked by cross/i });
+    expect(screen.getByRole('button', { name: /Top right space marked by cross/i })).toBeInTheDocument();
+
+    await screen.findByRole('button', { name: /Top center space marked by circle/i });
+    expect(screen.getByRole('button', { name: /Top center space marked by circle/i })).toBeInTheDocument();
+
+    await userEvent.click(screen.getByRole('button', { name: /Right middle empty space/i }));
+    await screen.findByRole('button', { name: /Right middle space marked by cross/i });
+    expect(screen.getByRole('button', { name: /Right middle space marked by cross/i })).toBeInTheDocument();
+
+    await screen.findByRole('button', { name: /Bottom center space marked by circle/i });
+    expect(screen.getByRole('button', { name: /Bottom center space marked by circle/i })).toBeInTheDocument();
+
+    await screen.findByTitle('Player circle has won!');
   });
 });

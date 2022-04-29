@@ -13,8 +13,12 @@ describe('getNotification()', () => {
     expect(getNotification(1)).toEqual('Has won!');
   });
 
+  test('should return "Has won!" if AI is a winner', () => {
+    expect(getNotification(2)).toEqual('Has won!');
+  });
+
   test('should return empty string if the outcome is out of range', () => {
-    expect(getNotification(2)).toEqual('');
+    expect(getNotification(3)).toEqual('');
     expect(getNotification(-2)).toEqual('');
     expect(getNotification(NaN)).toEqual('');
     expect(getNotification(10e5)).toEqual('');

@@ -1,7 +1,7 @@
 import { DRAW, UNRESOLVED } from '../constants';
 
 export default (outcome: number): string => {
-  if (![-1, 0, 1].includes(outcome)) {
+  if (![-1, 0, 1, 2].includes(outcome)) {
     return '';
   }
 

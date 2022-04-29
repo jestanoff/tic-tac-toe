@@ -150,7 +150,7 @@ const App = () => {
           <Select current={difficulty} options={options} handleChange={handleDifficultyChange} />
           <Heading title="Tic Tac Toe" />
           <ScoreBoard outcome={outcome.winner} playerTurn={playerTurn} />
-          <NotificationBar icon={icon} message={notification} showIcon={showIcon} />
+          <NotificationBar icon={icon} message={notification} showIcon={showIcon} winner={outcome.winner} />
           <section className={styles.board} ref={board}>
             <div className={styles.innerContainer}>
               {showWinningLine && (
