@@ -164,6 +164,9 @@ const App = () => {
             </div>
           </section>
           <Button disabled={isResetDisabled} handleClick={resetGame} text={RESET} />
+          <p className={styles.version} title="App version">
+            v{process.env.VERSION}
+          </p>
         </div>
       </CSSTransition>
     </TransitionGroup>

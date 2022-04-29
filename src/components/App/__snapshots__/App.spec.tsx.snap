@@ -246,6 +246,12 @@ exports[`<App /> should render the initial state of the game board with difficul
           Reset
         </button>
       </div>
+      <p
+        class="version"
+        title="App version"
+      >
+        v1.0.1
+      </p>
     </div>
   </div>
 </DocumentFragment>

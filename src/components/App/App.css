@@ -1,4 +1,5 @@
-@value bluePrimary, greySecondary from "css/colors.css";
+@value bluePrimary, greySecondary, greyTertiary from "css/colors.css";
+@value fontPrimary from "css/font.css";
 
 .container {
   background: greySecondary;
@@ -36,4 +37,13 @@
     top: 0px;
     transition: top 0.3s ease-out;
   }
+}
+
+.version {
+  color: greyTertiary;
+  font-family: fontPrimary;
+  font-size: 8px;
+  margin: 0;
+  padding: 0 8px 8px;
+  text-align: right;
 }

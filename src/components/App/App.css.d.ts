@@ -5,8 +5,11 @@ interface CssExports {
   'board': string;
   'container': string;
   'flip': string;
+  'fontPrimary': string;
   'greySecondary': string;
+  'greyTertiary': string;
   'innerContainer': string;
+  'version': string;
 }
 export const cssExports: CssExports;
 export default cssExports;

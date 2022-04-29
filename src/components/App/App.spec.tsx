@@ -4,6 +4,10 @@ import userEvent from '@testing-library/user-event';
 import App from './index';
 
 describe('<App />', () => {
+  beforeAll(() => {
+    process.env.VERSION = '1.0.1';
+  });
+
   test('should render the initial state of the game board with difficulty selector and start notification', () => {
     const { asFragment } = render(<App />);
 
@@ -54,6 +58,12 @@ describe('<App />', () => {
     render(<App />);
 
     expect(screen.getByRole('button', { name: /Reset/i })).toBeDisabled();
+  });
+
+  test('should display current version of the app in the bottom right corner', () => {
+    render(<App />);
+
+    expect(screen.getByTitle('App version')).toHaveTextContent('v1.0.1');
   });
 
   test('should be able to play a game until win', async () => {

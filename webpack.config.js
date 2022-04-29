@@ -2,6 +2,7 @@ const path = require('path');
 const fs = require('fs');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const webpack = require('webpack');
 
 const dist = path.resolve(__dirname, './docs');
 const dirSrc = path.resolve(__dirname, './src');
@@ -60,66 +61,14 @@ module.exports = {
         ],
       },
       {
-        test: /\.woff(\?.*)?$/,
-        use: [
-          {
-            loader: 'url-loader',
-            options: {
-              name: '/fonts/[name].[ext]',
-              limit: 10000,
-              mimetype: 'application/font-woff',
-            },
-          },
-        ],
-      },
-      {
         test: /\.woff2(\?.*)?$/,
         use: [
           {
             loader: 'url-loader',
             options: {
-              name: '/fonts/[name].[ext]',
+              name: '/css/[name].[ext]',
               limit: 10000,
               mimetype: 'application/font-woff2',
-            },
-          },
-        ],
-      },
-      {
-        test: /\.ttf(\?.*)?$/,
-        use: [
-          {
-            loader: 'url-loader',
-            options: {
-              name: '/fonts/[name].[ext]',
-              limit: 10000,
-              mimetype: 'application/octet-stream',
-            },
-          },
-        ],
-      },
-      {
-        test: /\.eot(\?.*)?$/,
-        use: [
-          {
-            loader: 'url-loader',
-            options: {
-              name: '/fonts/[name].[ext]',
-              limit: 10000,
-              mimetype: 'application/font-otf',
-            },
-          },
-        ],
-      },
-      {
-        test: /\.svg([?#].*)?$/,
-        use: [
-          {
-            loader: 'url-loader',
-            options: {
-              name: '/fonts/[name].[ext]',
-              limit: 10000,
-              mimetype: 'image/svg+xml',
             },
           },
         ],
@@ -132,6 +81,9 @@ module.exports = {
     }),
     new MiniCssExtractPlugin({
       filename: '[name].css',
+    }),
+    new webpack.DefinePlugin({
+      'process.env.VERSION': JSON.stringify(process.env.npm_package_version),
     }),
   ],
   devtool: 'source-map',
