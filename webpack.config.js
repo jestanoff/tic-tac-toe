@@ -52,6 +52,7 @@ module.exports = {
               importLoaders: 1,
               modules: { localIdentName: '[name]__[local]___[hash:base64:5]' },
               sourceMap: true,
+              url: false,
             },
           },
           {
@@ -62,13 +63,16 @@ module.exports = {
       },
       {
         test: /\.woff2(\?.*)?$/,
+        include: path.resolve(__dirname, './src/fonts'),
         use: [
           {
-            loader: 'url-loader',
+            loader: 'file-loader',
             options: {
-              name: '/css/[name].[ext]',
+              esModule: false,
               limit: 10000,
               mimetype: 'application/font-woff2',
+              name: '[name].[ext]',
+              outputPath: 'fonts/',
             },
           },
         ],
