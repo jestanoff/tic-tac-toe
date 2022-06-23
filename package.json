@@ -58,7 +58,7 @@
     "jest": "^27.4.1",
     "jest-canvas-mock": "^2.4.0",
     "jest-css-modules-transform": "^4.3.0",
-    "jsdom": "^9.12.0",
+    "jsdom": "^16.5.0",
     "mini-css-extract-plugin": "^1.3.5",
     "mock-css-modules": "^1.0.0",
     "postcss": "^8.2.4",
